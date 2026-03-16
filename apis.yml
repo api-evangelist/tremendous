@@ -1,31 +1,45 @@
 aid: tremendous
 name: Tremendous
 description: >-
-  Join 10K  businesses who use Tremendous to send millions of rewards worldwide.
-  For free. 
+  Tremendous allows businesses to send rewards, incentives, and payouts
+  worldwide using their simple API and dashboard.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Rewards
+  - Payouts
+  - Incentives
 created: '2025-02-08'
-modified: '2025-02-08'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/tremendous/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
   - aid: tremendous:tremendous
-    name: Tremendous
+    name: Tremendous API
     description: >-
-      Join 10K  businesses who use Tremendous to send millions of rewards
-      worldwide. For free. 
-    humanURL: ' https://www.tremendous.com/'
+      Tremendous allows businesses to send rewards, incentives, and payouts
+      worldwide using their simple API.
+    humanURL: https://www.tremendous.com/
+    baseURL: https://testflight.tremendous.com/api/v2
     tags:
-      - API
+      - Rewards
+      - Payouts
+      - Incentives
     properties:
       - type: Documentation
-        url: ' https://www.tremendous.com/'
+        url: https://developers.tremendous.com/
+      - type: Reference
+        url: https://developers.tremendous.com/reference/api-endpoints-overview
+common:
+  - type: Website
+    url: https://www.tremendous.com/
+  - type: Documentation
+    url: https://developers.tremendous.com/
+  - type: Sign Up
+    url: https://app.tremendous.com/auth/sign_up
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
