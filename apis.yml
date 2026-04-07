@@ -8,9 +8,9 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Rewards
-  - Payouts
   - Incentives
+  - Payouts
+  - Rewards
 created: '2025-02-08'
 modified: '2026-03-16'
 url: >-
@@ -25,9 +25,9 @@ apis:
     humanURL: https://www.tremendous.com/
     baseURL: https://testflight.tremendous.com/api/v2
     tags:
-      - Rewards
-      - Payouts
       - Incentives
+      - Payouts
+      - Rewards
     properties:
       - type: Documentation
         url: https://developers.tremendous.com/
