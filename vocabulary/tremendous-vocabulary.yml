@@ -1,0 +1,155 @@
+vocabulary:
+  name: Tremendous Vocabulary
+  description: >-
+    Domain vocabulary for the Tremendous rewards and payouts platform,
+    covering incentive programs, reward delivery, payout methods, and
+    campaign management concepts for businesses sending rewards globally.
+  version: 1.0.0
+  created: '2026-05-03'
+  modified: '2026-05-03'
+  tags:
+    - Employee Incentives
+    - Incentives
+    - Payouts
+    - Rewards
+
+terms:
+  - term: Order
+    definition: >-
+      The primary transactional unit in Tremendous, wrapping one or more
+      rewards along with a funding source and optional external reference
+      for idempotency.
+    related:
+      - Reward
+      - Funding Source
+
+  - term: Reward
+    definition: >-
+      An individual payment or incentive within an order sent to a single
+      recipient. Rewards have a value, delivery method, and status tracking.
+    related:
+      - Order
+      - Product
+      - Campaign
+
+  - term: Product
+    definition: >-
+      An available payout method in the Tremendous catalog, such as an
+      Amazon.com gift card, prepaid Visa card, PayPal, bank transfer, or
+      charity donation.
+    related:
+      - Campaign
+      - SKU
+
+  - term: SKU
+    definition: >-
+      A specific denomination option for a product, defining the minimum
+      and maximum acceptable value or a fixed denomination.
+    related:
+      - Product
+
+  - term: Campaign
+    definition: >-
+      A configuration defining the presentation (branding, email subject,
+      message) and the catalog of products available for recipient-choice
+      rewards.
+    related:
+      - Reward
+      - Product
+
+  - term: Funding Source
+    definition: >-
+      The payment method used to fund reward orders. Common options include
+      account balance, invoice billing, credit card, and ACH bank transfer.
+    related:
+      - Order
+
+  - term: External ID
+    definition: >-
+      A customer-provided reference attached to an order for idempotency
+      and cross-system correlation. Orders with the same external_id will
+      return the existing order rather than creating a duplicate.
+    related:
+      - Order
+
+  - term: Idempotency
+    definition: >-
+      The property that creating an order with a previously used external_id
+      returns the existing order rather than creating a duplicate, ensuring
+      safe retries on network failures.
+    related:
+      - External ID
+
+  - term: Delivery Method
+    definition: >-
+      How a reward is sent to the recipient: EMAIL (send email with
+      redemption link), LINK (return URL for embedding), or PHONE
+      (send via SMS).
+    related:
+      - Reward
+
+  - term: Sandbox
+    definition: >-
+      A free testing environment at testflight.tremendous.com that
+      mirrors production functionality without real money movement,
+      used for integration development.
+    related:
+      - API Key
+
+  - term: API Key
+    definition: >-
+      A secret credential used for Bearer token authentication with the
+      Tremendous API. Generated in dashboard Settings > API. Different
+      keys exist for sandbox and production.
+    related:
+      - Authentication
+      - Sandbox
+
+  - term: Organization
+    definition: >-
+      A team account within the Tremendous platform that owns orders,
+      rewards, campaigns, members, and funding sources. Multiple organizations
+      can exist under a single account.
+    related:
+      - Member
+
+  - term: Recipient
+    definition: >-
+      The person who receives a reward, identified by name, email, and/or
+      phone number. The recipient selects their preferred payout method
+      (when campaign allows choice) and receives delivery communication.
+    related:
+      - Reward
+
+  - term: Multi-Product Reward
+    definition: >-
+      A reward where the recipient chooses from a curated catalog of
+      payout options defined by the campaign. The recipient selects
+      their preferred gift card, prepaid card, or other method.
+    related:
+      - Campaign
+      - Reward
+
+  - term: Single-Product Reward
+    definition: >-
+      A reward where the payout method is fixed (e.g., specifically
+      an Amazon.com gift card), with no recipient choice.
+    related:
+      - Product
+      - Reward
+
+  - term: Webhook
+    definition: >-
+      An HTTP callback that delivers real-time event notifications to
+      a configured endpoint when orders complete, rewards are delivered,
+      or other account events occur.
+    related:
+      - Order
+      - Reward
+
+  - term: Rate Limit
+    definition: >-
+      The Tremendous API enforces a rate limit of 30 requests per 30
+      seconds. Exceeding this returns a 429 Too Many Requests response.
+    related:
+      - API Key

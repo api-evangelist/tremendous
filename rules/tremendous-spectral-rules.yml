@@ -1,0 +1,108 @@
+rules:
+  tremendous-operation-id-camel-case:
+    description: Operation IDs must use camelCase
+    message: "Operation ID '{{value}}' must use camelCase"
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  tremendous-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 /()+&-]*$"
+
+  tremendous-security-defined:
+    description: All operations must define security requirements
+    message: "Operation must define security requirements"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: defined
+
+  tremendous-response-200-get:
+    description: All GET operations must define a 200 response
+    message: "GET operation must define a 200 success response"
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: defined
+
+  tremendous-response-401-defined:
+    description: Authenticated operations should define a 401 response
+    message: "Operation should define 401 Unauthorized"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: responses.401
+      function: defined
+
+  tremendous-tag-defined:
+    description: All operations must have at least one tag
+    message: "Operation must include at least one tag"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: defined
+
+  tremendous-bearer-auth:
+    description: Tremendous API uses Bearer token (API key) authentication
+    message: "Use BearerAuth security scheme"
+    severity: info
+    given: "$.components.securitySchemes.BearerAuth"
+    then:
+      function: defined
+
+  tremendous-path-snake-case:
+    description: Path parameters use snake_case
+    message: "Path segments should use snake_case or kebab-case"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z][a-z0-9_-]*(/[a-z][a-z0-9_-]*|/\\{[a-zA-Z][a-zA-Z0-9_]*\\})*)+$"
+
+  tremendous-post-request-body:
+    description: POST operations should define a request body
+    message: "POST operation should include a requestBody"
+    severity: warn
+    given: "$.paths[*].post"
+    then:
+      field: requestBody
+      function: defined
+
+  tremendous-rate-limit-response:
+    description: Tremendous API enforces rate limits - 429 should be documented
+    message: "Operation should define 429 Too Many Requests response"
+    severity: info
+    given: "$.paths[*][get,post]"
+    then:
+      field: responses.429
+      function: defined
+
+  tremendous-idempotency-external-id:
+    description: Create operations should document external_id for idempotency
+    message: "Order creation supports external_id for idempotent requests"
+    severity: info
+    given: "$.paths['/orders'].post.requestBody.content.application/json.schema"
+    then:
+      function: defined
+
+  tremendous-list-pagination:
+    description: List operations should support pagination with offset and limit
+    message: "List endpoint should support offset and limit parameters"
+    severity: info
+    given: "$.paths[*].get"
+    then:
+      function: defined

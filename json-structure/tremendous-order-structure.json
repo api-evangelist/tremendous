@@ -1,0 +1,31 @@
+{
+  "title": "Tremendous Order Structure",
+  "description": "JSON Structure for a Tremendous reward order",
+  "type": "object",
+  "fields": [
+    { "name": "id", "type": "string", "required": true, "description": "Unique order identifier" },
+    { "name": "external_id", "type": "string", "required": false, "description": "Customer external reference for idempotency" },
+    { "name": "status", "type": "enum[DRAFT,PENDING_APPROVAL,APPROVED,PROCESSING,DONE,FAILED]", "required": true, "description": "Order fulfillment status" },
+    { "name": "payment.funding_source_id", "type": "string", "required": true, "description": "Funding source (use 'balance' for account balance)" },
+    { "name": "payment.subtotal", "type": "object", "required": false, "description": "Order subtotal {currency_code, value}" },
+    { "name": "payment.total", "type": "object", "required": false, "description": "Order total including fees {currency_code, value}" },
+    { "name": "rewards", "type": "array[Reward]", "required": false, "description": "Individual rewards in this order" },
+    { "name": "created_at", "type": "date-time", "required": false, "description": "Order creation timestamp" }
+  ],
+  "nested": {
+    "Reward": {
+      "fields": [
+        { "name": "id", "type": "string", "required": true, "description": "Reward identifier" },
+        { "name": "order_id", "type": "string", "required": false, "description": "Parent order ID" },
+        { "name": "status", "type": "enum[PENDING,PROCESSING,DELIVERED,FAILED,CANCELED]", "required": true, "description": "Delivery status" },
+        { "name": "value.denomination", "type": "number", "required": true, "description": "Reward amount" },
+        { "name": "value.currency_code", "type": "string", "required": true, "description": "Currency code (USD, EUR, etc.)" },
+        { "name": "recipient.name", "type": "string", "required": true, "description": "Recipient full name" },
+        { "name": "recipient.email", "type": "string", "required": true, "description": "Recipient email" },
+        { "name": "delivery.method", "type": "enum[EMAIL,LINK,PHONE]", "required": false, "description": "Delivery channel" },
+        { "name": "delivery.status", "type": "string", "required": false, "description": "Delivery status details" },
+        { "name": "delivery.delivered_at", "type": "date-time", "required": false, "description": "Delivery timestamp" }
+      ]
+    }
+  }
+}

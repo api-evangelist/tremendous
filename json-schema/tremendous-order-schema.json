@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tremendous/main/json-schema/tremendous-order-schema.json",
+  "title": "Tremendous Order",
+  "description": "Schema for a Tremendous reward order",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique order identifier" },
+    "external_id": { "type": "string", "description": "Customer-provided external reference for idempotency" },
+    "status": {
+      "type": "string",
+      "enum": ["DRAFT", "PENDING_APPROVAL", "APPROVED", "PROCESSING", "DONE", "FAILED"],
+      "description": "Order status"
+    },
+    "payment": {
+      "type": "object",
+      "properties": {
+        "funding_source_id": { "type": "string" },
+        "subtotal": { "$ref": "#/$defs/MoneyAmount" },
+        "total": { "$ref": "#/$defs/MoneyAmount" }
+      }
+    },
+    "rewards": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Reward" }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "required": ["id", "status"],
+  "$defs": {
+    "MoneyAmount": {
+      "type": "object",
+      "properties": {
+        "currency_code": { "type": "string" },
+        "value": { "type": "number", "minimum": 0 }
+      }
+    },
+    "Reward": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "order_id": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "PROCESSING", "DELIVERED", "FAILED", "CANCELED"]
+        },
+        "value": { "$ref": "#/$defs/MoneyAmount" },
+        "recipient": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "phone": { "type": "string" }
+          }
+        },
+        "delivery": {
+          "type": "object",
+          "properties": {
+            "method": { "type": "string", "enum": ["EMAIL", "LINK", "PHONE"] },
+            "status": { "type": "string" },
+            "delivered_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

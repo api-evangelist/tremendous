@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tremendous/main/json-schema/tremendous-product-schema.json",
+  "title": "Tremendous Product",
+  "description": "Schema for a Tremendous payout product (gift card, prepaid card, etc.)",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "description": "Unique product identifier" },
+    "name": { "type": "string", "description": "Product name (e.g., Amazon.com)" },
+    "category": {
+      "type": "string",
+      "enum": ["GIFT_CARD", "PREPAID_CARD", "BANK_TRANSFER", "PAYPAL", "VENMO", "CHARITY", "CRYPTOCURRENCY"],
+      "description": "Product category"
+    },
+    "currency_codes": { "type": "array", "items": { "type": "string" }, "description": "Supported currency codes" },
+    "countries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "abbr": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "skus": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "min": { "type": "number" },
+          "max": { "type": "number" },
+          "denomination": { "type": "number" }
+        }
+      }
+    },
+    "image_url": { "type": "string", "format": "uri", "description": "Product image URL" }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": true
+}

@@ -1,0 +1,1025 @@
+openapi: 3.1.0
+info:
+  title: Tremendous API
+  description: >-
+    The Tremendous API allows businesses to send rewards, incentives, and
+    payouts worldwide. Access 2000+ payout methods including gift cards,
+    prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity
+    donations. Supports multi-product rewards (recipient chooses from a
+    catalog) and single-product rewards (fixed payout method). Authentication
+    uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+  - url: https://testflight.tremendous.com/api/v2
+    description: Sandbox (testing)
+  - url: https://www.tremendous.com/api/v2
+    description: Production
+tags:
+  - name: Orders
+    description: Create and manage reward orders
+  - name: Rewards
+    description: Manage individual rewards within orders
+  - name: Products
+    description: Browse available payout products and gift cards
+  - name: Funding Sources
+    description: Manage funding sources for sending rewards
+  - name: Campaigns
+    description: Manage reward presentation and product catalogs
+  - name: Organizations
+    description: Manage organizations (team accounts)
+  - name: Members
+    description: Manage organization members
+  - name: Invoices
+    description: View and manage invoices
+  - name: Webhooks
+    description: Configure webhook notifications
+security:
+  - BearerAuth: []
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      summary: List Orders
+      description: Returns a paginated list of all orders in the organization.
+      tags:
+        - Orders
+      parameters:
+        - name: offset
+          in: query
+          description: Pagination offset
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          description: Maximum number of results to return (max 100)
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+        - name: created_at_gte
+          in: query
+          description: Filter orders created at or after this date
+          schema:
+            type: string
+            format: date-time
+        - name: created_at_lte
+          in: query
+          description: Filter orders created at or before this date
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  total_count:
+                    type: integer
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+    post:
+      operationId: createOrder
+      summary: Create Order
+      description: >-
+        Create a new order to send one or more rewards. An order contains
+        rewards, a funding source, and optional external ID for idempotency.
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '200':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    $ref: '#/components/schemas/Order'
+        '400':
+          description: Bad request - validation error
+        '401':
+          description: Unauthorized
+        '402':
+          description: Insufficient funds
+        '409':
+          description: Conflict - duplicate external_id
+        '422':
+          description: Unprocessable entity
+        '429':
+          description: Rate limit exceeded
+  /orders/{id}:
+    get:
+      operationId: getOrder
+      summary: Get Order
+      description: Retrieve details of a specific order by its ID.
+      tags:
+        - Orders
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Order ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order not found
+  /orders/approve:
+    post:
+      operationId: approveOrder
+      summary: Approve Order
+      description: Approve a pending order that requires manual approval.
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Order ID to approve
+              required:
+                - id
+      responses:
+        '200':
+          description: Order approved
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order not found
+  /rewards/{id}:
+    get:
+      operationId: getReward
+      summary: Get Reward
+      description: Retrieve details of a specific reward by its ID.
+      tags:
+        - Rewards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Reward ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Reward details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reward:
+                    $ref: '#/components/schemas/Reward'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Reward not found
+  /rewards/{id}/resend:
+    post:
+      operationId: resendReward
+      summary: Resend Reward
+      description: Resend the delivery for a reward (e.g., resend the email).
+      tags:
+        - Rewards
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Reward ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Reward resent
+        '401':
+          description: Unauthorized
+        '404':
+          description: Reward not found
+  /products:
+    get:
+      operationId: listProducts
+      summary: List Products
+      description: >-
+        Returns a list of available payout products (gift cards, prepaid cards,
+        PayPal, bank transfers, charity donations, etc.).
+      tags:
+        - Products
+      parameters:
+        - name: country
+          in: query
+          description: Filter by country (ISO 3166-1 alpha-2)
+          schema:
+            type: string
+        - name: currency_codes
+          in: query
+          description: Filter by currency code (comma-separated)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        '401':
+          description: Unauthorized
+  /funding_sources:
+    get:
+      operationId: listFundingSources
+      summary: List Funding Sources
+      description: Returns a list of available funding sources for the organization.
+      tags:
+        - Funding Sources
+      responses:
+        '200':
+          description: List of funding sources
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  funding_sources:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FundingSource'
+        '401':
+          description: Unauthorized
+  /campaigns:
+    get:
+      operationId: listCampaigns
+      summary: List Campaigns
+      description: Returns a list of all campaigns in the organization.
+      tags:
+        - Campaigns
+      responses:
+        '200':
+          description: List of campaigns
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Campaign'
+        '401':
+          description: Unauthorized
+  /campaigns/{id}:
+    get:
+      operationId: getCampaign
+      summary: Get Campaign
+      description: Retrieve details of a specific campaign by its ID.
+      tags:
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Campaign ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Campaign details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaign:
+                    $ref: '#/components/schemas/Campaign'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Campaign not found
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: Returns a list of organizations accessible to the authenticated member.
+      tags:
+        - Organizations
+      responses:
+        '200':
+          description: List of organizations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createOrganization
+      summary: Create Organization
+      description: Create a new organization (sub-account) within the platform.
+      tags:
+        - Organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Organization name
+                website:
+                  type: string
+                  description: Organization website URL
+              required:
+                - name
+      responses:
+        '201':
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+  /organizations/{id}:
+    get:
+      operationId: getOrganization
+      summary: Get Organization
+      description: Retrieve details of a specific organization.
+      tags:
+        - Organizations
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Organization ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Organization details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Organization not found
+  /members:
+    get:
+      operationId: listMembers
+      summary: List Members
+      description: Returns a list of members in the organization.
+      tags:
+        - Members
+      responses:
+        '200':
+          description: List of members
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  members:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Member'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createMember
+      summary: Create Member
+      description: Invite a new member to the organization.
+      tags:
+        - Members
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: Member email address
+                name:
+                  type: string
+                  description: Member full name
+                role:
+                  type: string
+                  enum: [MEMBER, ADMIN]
+                  description: Member role
+              required:
+                - email
+                - name
+      responses:
+        '201':
+          description: Member created
+        '401':
+          description: Unauthorized
+  /invoices:
+    get:
+      operationId: listInvoices
+      summary: List Invoices
+      description: Returns a list of invoices for the organization.
+      tags:
+        - Invoices
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: List of invoices
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invoices:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Invoice'
+        '401':
+          description: Unauthorized
+  /invoices/{id}:
+    get:
+      operationId: getInvoice
+      summary: Get Invoice
+      description: Retrieve details of a specific invoice.
+      tags:
+        - Invoices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Invoice ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Invoice details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  invoice:
+                    $ref: '#/components/schemas/Invoice'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Invoice not found
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      summary: List Webhooks
+      description: Returns webhook configuration for the organization.
+      tags:
+        - Webhooks
+      responses:
+        '200':
+          description: Webhook configuration
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhooks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createWebhook
+      summary: Create Webhook
+      description: Configure a webhook endpoint for the organization.
+      tags:
+        - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: Webhook endpoint URL
+                private_key:
+                  type: string
+                  description: Private key for HMAC signature verification
+              required:
+                - url
+      responses:
+        '201':
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhook:
+                    $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+  /webhooks/{id}:
+    get:
+      operationId: getWebhook
+      summary: Get Webhook
+      description: Retrieve details of a specific webhook configuration.
+      tags:
+        - Webhooks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Webhook ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Webhook details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhook:
+                    $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Webhook not found
+    delete:
+      operationId: deleteWebhook
+      summary: Delete Webhook
+      description: Remove a webhook configuration from the organization.
+      tags:
+        - Webhooks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Webhook ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Webhook deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: Webhook not found
+  /webhooks/{id}/simulate:
+    post:
+      operationId: simulateWebhook
+      summary: Simulate Webhook
+      description: Send a test event to the webhook endpoint to verify connectivity.
+      tags:
+        - Webhooks
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Webhook ID
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event:
+                  type: string
+                  description: "Event type to simulate (e.g., ORDERS.COMPLETED)"
+              required:
+                - event
+      responses:
+        '200':
+          description: Simulation sent
+        '401':
+          description: Unauthorized
+        '404':
+          description: Webhook not found
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique order identifier
+        external_id:
+          type: string
+          description: Customer-provided external reference for idempotency
+        status:
+          type: string
+          enum: [DRAFT, PENDING_APPROVAL, APPROVED, PROCESSING, DONE, FAILED]
+          description: Order status
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+            subtotal:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                value:
+                  type: number
+            total:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                value:
+                  type: number
+        rewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
+        created_at:
+          type: string
+          format: date-time
+    CreateOrderRequest:
+      type: object
+      properties:
+        external_id:
+          type: string
+          description: Reference for idempotency and retrieval
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+              description: "Funding source ID or 'balance'"
+          required:
+            - funding_source_id
+        reward:
+          $ref: '#/components/schemas/RewardInput'
+      required:
+        - payment
+        - reward
+    Reward:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique reward identifier
+        order_id:
+          type: string
+          description: Parent order ID
+        status:
+          type: string
+          enum: [PENDING, PROCESSING, DELIVERED, FAILED, CANCELED]
+          description: Reward delivery status
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+              description: Reward amount
+            currency_code:
+              type: string
+              description: Currency code (e.g., USD)
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum: [EMAIL, LINK, PHONE]
+            status:
+              type: string
+            delivered_at:
+              type: string
+              format: date-time
+        campaign_id:
+          type: string
+          description: Campaign used for this reward
+        created_at:
+          type: string
+          format: date-time
+    RewardInput:
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+            currency_code:
+              type: string
+          required:
+            - denomination
+            - currency_code
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum: [EMAIL, LINK, PHONE]
+              default: EMAIL
+        campaign_id:
+          type: string
+          description: Campaign ID (defines product catalog)
+        products:
+          type: array
+          items:
+            type: string
+          description: Product IDs (alternative to campaign_id)
+        language:
+          type: string
+          description: ISO-639-1 language code for recipient communication
+    Recipient:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Recipient full name
+        email:
+          type: string
+          format: email
+          description: Recipient email address
+        phone:
+          type: string
+          description: Recipient phone number (for SMS delivery)
+      required:
+        - name
+        - email
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique product identifier
+        name:
+          type: string
+          description: Product name (e.g., Amazon.com)
+        category:
+          type: string
+          enum: [GIFT_CARD, PREPAID_CARD, BANK_TRANSFER, PAYPAL, VENMO, CHARITY, CRYPTOCURRENCY]
+          description: Product category
+        currency_codes:
+          type: array
+          items:
+            type: string
+          description: Supported currency codes
+        countries:
+          type: array
+          items:
+            type: object
+            properties:
+              abbr:
+                type: string
+              name:
+                type: string
+          description: Countries where product is available
+        skus:
+          type: array
+          items:
+            type: object
+            properties:
+              min:
+                type: number
+              max:
+                type: number
+              denomination:
+                type: number
+          description: Available denominations/value ranges
+        image_url:
+          type: string
+          format: uri
+          description: Product logo/image URL
+    FundingSource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique funding source identifier
+        method:
+          type: string
+          enum: [BALANCE, INVOICE, CREDIT_CARD, ACH]
+          description: Funding method type
+        meta:
+          type: object
+          description: Additional metadata (account details, etc.)
+        balance:
+          type: object
+          properties:
+            currency_code:
+              type: string
+            amount:
+              type: number
+          description: Current balance (for balance funding source)
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique campaign identifier
+        name:
+          type: string
+          description: Campaign name
+        description:
+          type: string
+          description: Campaign description shown to recipients
+        email_style:
+          type: object
+          properties:
+            logo:
+              type: string
+              format: uri
+            subject:
+              type: string
+            body:
+              type: string
+          description: Email branding and messaging
+        products:
+          type: array
+          items:
+            type: string
+          description: Product IDs available in this campaign
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier
+        name:
+          type: string
+          description: Organization name
+        website:
+          type: string
+          format: uri
+          description: Organization website
+        with_api_credentials:
+          type: boolean
+          description: Whether organization has API credentials enabled
+        status:
+          type: string
+          enum: [ACTIVE, INACTIVE]
+          description: Organization status
+    Member:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique member identifier
+        name:
+          type: string
+          description: Member full name
+        email:
+          type: string
+          format: email
+          description: Member email address
+        role:
+          type: string
+          enum: [MEMBER, ADMIN]
+          description: Member role
+        status:
+          type: string
+          enum: [ACTIVE, PENDING, INACTIVE]
+          description: Membership status
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique invoice identifier
+        po_number:
+          type: string
+          description: Purchase order number
+        amount:
+          type: object
+          properties:
+            currency_code:
+              type: string
+            value:
+              type: number
+          description: Invoice amount
+        remaining:
+          type: object
+          properties:
+            currency_code:
+              type: string
+            value:
+              type: number
+          description: Remaining balance on invoice
+        status:
+          type: string
+          enum: [PENDING, PAID, PARTIAL, OVERDUE, CANCELED]
+          description: Invoice status
+        created_at:
+          type: string
+          format: date-time
+        due_at:
+          type: string
+          format: date-time
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique webhook identifier
+        url:
+          type: string
+          format: uri
+          description: Webhook endpoint URL
+        events:
+          type: array
+          items:
+            type: string
+          description: Event types this webhook receives
+        created_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer token authentication using a Tremendous API key.
+        Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks

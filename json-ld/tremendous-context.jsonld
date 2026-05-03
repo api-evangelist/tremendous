@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "tremendous": "https://tremendous.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Order": "schema:Order",
+    "Reward": "schema:GiveAction",
+    "Product": "schema:Product",
+    "Campaign": "tremendous:Campaign",
+    "Organization": "schema:Organization",
+    "Member": "schema:Person",
+    "Invoice": "schema:Invoice",
+    "FundingSource": "tremendous:FundingSource",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "tremendous:status",
+    "external_id": "tremendous:externalId",
+    "created_at": { "@id": "schema:dateCreated", "@type": "xsd:dateTime" },
+    "due_at": { "@id": "schema:expires", "@type": "xsd:dateTime" },
+    "category": "schema:category",
+    "image_url": { "@id": "schema:image", "@type": "@id" },
+    "website": { "@id": "schema:url", "@type": "@id" },
+    "email": "schema:email",
+    "role": "schema:roleName",
+
+    "recipient": { "@id": "schema:recipient", "@type": "@id" },
+    "rewards": { "@id": "tremendous:rewards", "@container": "@set" },
+    "products": { "@id": "tremendous:products", "@container": "@set" },
+    "orders": { "@id": "tremendous:orders", "@container": "@set" },
+
+    "payment": "tremendous:payment",
+    "funding_source_id": { "@id": "tremendous:fundingSourceId", "@type": "@id" },
+    "denomination": { "@id": "schema:price", "@type": "xsd:decimal" },
+    "currency_code": "schema:priceCurrency",
+    "value": "schema:priceSpecification",
+
+    "delivery": "tremendous:delivery",
+    "method": "tremendous:deliveryMethod",
+    "delivered_at": { "@id": "schema:dateDelivered", "@type": "xsd:dateTime" },
+    "campaign_id": { "@id": "tremendous:campaignId", "@type": "@id" },
+    "url": { "@id": "schema:url", "@type": "@id" },
+    "skus": { "@id": "tremendous:skus", "@container": "@set" },
+    "countries": { "@id": "schema:areaServed", "@container": "@set" },
+    "currency_codes": { "@id": "tremendous:currencyCodes", "@container": "@set" }
+  }
+}
