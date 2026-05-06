@@ -1,296 +1,557 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Tremendous Rewards and Payouts"
-  description: >-
-    Unified capability for sending and managing rewards, incentives, and
-    payouts worldwide using the Tremendous platform. Enables businesses to
-    send gift cards, prepaid cards, PayPal, bank transfers, and 2000+ other
-    payout methods to employees, customers, survey participants, and research
-    subjects with full delivery tracking and reporting.
+  label: Tremendous Rewards and Payouts
+  description: Unified capability for sending and managing rewards, incentives, and payouts worldwide using the Tremendous
+    platform. Enables businesses to send gift cards, prepaid cards, PayPal, bank transfers, and 2000+ other payout methods
+    to employees, customers, survey participants, and research subjects with full delivery tracking and reporting.
   tags:
-    - Employee Incentives
-    - Global Payouts
-    - Incentives
-    - Market Research
-    - Payouts
-    - Rewards
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Employee Incentives
+  - Global Payouts
+  - Incentives
+  - Market Research
+  - Payouts
+  - Rewards
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      TREMENDOUS_API_KEY: TREMENDOUS_API_KEY
-
+- namespace: env
+  keys:
+    TREMENDOUS_API_KEY: TREMENDOUS_API_KEY
 capability:
   consumes:
-    - import: tremendous
-      location: ./shared/tremendous-api.yaml
-
+  - type: http
+    namespace: tremendous
+    baseUri: https://testflight.tremendous.com/api/v2
+    description: Tremendous rewards and payouts API
+    authentication:
+      type: bearer
+      token: '{{TREMENDOUS_API_KEY}}'
+    resources:
+    - name: orders
+      path: /orders
+      description: Reward orders
+      operations:
+      - name: list-orders
+        method: GET
+        description: List Orders
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Pagination offset
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Max results (max 100)
+        - name: created_at_gte
+          in: query
+          type: string
+          required: false
+          description: Filter by creation date (gte)
+        - name: created_at_lte
+          in: query
+          type: string
+          required: false
+          description: Filter by creation date (lte)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-order
+        method: POST
+        description: Create Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            external_id: '{{tools.external_id}}'
+            payment:
+              funding_source_id: '{{tools.funding_source_id}}'
+            reward:
+              value:
+                denomination: '{{tools.denomination}}'
+                currency_code: '{{tools.currency_code}}'
+              recipient:
+                name: '{{tools.recipient_name}}'
+                email: '{{tools.recipient_email}}'
+              delivery:
+                method: '{{tools.delivery_method}}'
+              campaign_id: '{{tools.campaign_id}}'
+    - name: order-detail
+      path: /orders/{id}
+      description: Single order
+      operations:
+      - name: get-order
+        method: GET
+        description: Get Order
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Order ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reward-detail
+      path: /rewards/{id}
+      description: Single reward
+      operations:
+      - name: get-reward
+        method: GET
+        description: Get Reward
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Reward ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reward-resend
+      path: /rewards/{id}/resend
+      description: Resend reward delivery
+      operations:
+      - name: resend-reward
+        method: POST
+        description: Resend Reward
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Reward ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: products
+      path: /products
+      description: Available payout products
+      operations:
+      - name: list-products
+        method: GET
+        description: List Products
+        inputParameters:
+        - name: country
+          in: query
+          type: string
+          required: false
+          description: ISO 3166-1 alpha-2 country code
+        - name: currency_codes
+          in: query
+          type: string
+          required: false
+          description: Currency codes (comma-separated)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: funding-sources
+      path: /funding_sources
+      description: Funding sources
+      operations:
+      - name: list-funding-sources
+        method: GET
+        description: List Funding Sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: campaigns
+      path: /campaigns
+      description: Reward campaigns
+      operations:
+      - name: list-campaigns
+        method: GET
+        description: List Campaigns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: campaign-detail
+      path: /campaigns/{id}
+      description: Single campaign
+      operations:
+      - name: get-campaign
+        method: GET
+        description: Get Campaign
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Campaign ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: organizations
+      path: /organizations
+      description: Organizations
+      operations:
+      - name: list-organizations
+        method: GET
+        description: List Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: members
+      path: /members
+      description: Organization members
+      operations:
+      - name: list-members
+        method: GET
+        description: List Members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-member
+        method: POST
+        description: Create Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            email: '{{tools.email}}'
+            name: '{{tools.name}}'
+            role: '{{tools.role}}'
+    - name: invoices
+      path: /invoices
+      description: Invoices
+      operations:
+      - name: list-invoices
+        method: GET
+        description: List Invoices
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+          required: false
+          description: Pagination offset
+        - name: limit
+          in: query
+          type: integer
+          required: false
+          description: Max results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: webhooks
+      path: /webhooks
+      description: Webhook configuration
+      operations:
+      - name: list-webhooks
+        method: GET
+        description: List Webhooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-webhook
+        method: POST
+        description: Create Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            url: '{{tools.url}}'
   exposes:
-    - type: rest
-      port: 8080
-      namespace: tremendous-rewards-api
-      description: "Unified REST API for sending and managing rewards and payouts."
-      resources:
-        - path: /v1/orders
-          name: orders
-          description: "Reward orders for sending payouts"
-          operations:
-            - method: GET
-              name: list-orders
-              description: "List all reward orders"
-              call: "tremendous.list-orders"
-              with:
-                offset: "rest.offset"
-                limit: "rest.limit"
-                created_at_gte: "rest.created_at_gte"
-                created_at_lte: "rest.created_at_lte"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-order
-              description: "Create a reward order"
-              call: "tremendous.create-order"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/orders/{id}
-          name: order-detail
-          description: "Order tracking and status"
-          operations:
-            - method: GET
-              name: get-order
-              description: "Get order status and rewards"
-              call: "tremendous.get-order"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/rewards/{id}
-          name: reward-detail
-          description: "Individual reward status"
-          operations:
-            - method: GET
-              name: get-reward
-              description: "Get reward delivery status"
-              call: "tremendous.get-reward"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/rewards/{id}/resend
-          name: reward-resend
-          description: "Resend reward"
-          operations:
-            - method: POST
-              name: resend-reward
-              description: "Resend reward delivery"
-              call: "tremendous.resend-reward"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/products
-          name: products
-          description: "Available payout products catalog"
-          operations:
-            - method: GET
-              name: list-products
-              description: "Browse available products"
-              call: "tremendous.list-products"
-              with:
-                country: "rest.country"
-                currency_codes: "rest.currency_codes"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/funding-sources
-          name: funding-sources
-          description: "Funding sources for paying orders"
-          operations:
-            - method: GET
-              name: list-funding-sources
-              description: "List funding sources"
-              call: "tremendous.list-funding-sources"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/campaigns
-          name: campaigns
-          description: "Reward campaigns (branding and product selection)"
-          operations:
-            - method: GET
-              name: list-campaigns
-              description: "List campaigns"
-              call: "tremendous.list-campaigns"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/invoices
-          name: invoices
-          description: "Invoices and billing"
-          operations:
-            - method: GET
-              name: list-invoices
-              description: "List invoices"
-              call: "tremendous.list-invoices"
-              with:
-                offset: "rest.offset"
-                limit: "rest.limit"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: tremendous-rewards-mcp
-      transport: http
-      description: "MCP server for AI-assisted reward sending, payout management, and incentive program tracking."
-      tools:
-        - name: list-orders
-          description: "List reward orders to track incentive program activity and payout history."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "tremendous.list-orders"
-          with:
-            offset: "tools.offset"
-            limit: "tools.limit"
-            created_at_gte: "tools.created_at_gte"
-            created_at_lte: "tools.created_at_lte"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-order
-          description: "Send a reward or payout to a recipient. Specify recipient email, amount, currency, and delivery method (EMAIL, LINK, or PHONE)."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "tremendous.create-order"
-          with:
-            external_id: "tools.external_id"
-            funding_source_id: "tools.funding_source_id"
-            denomination: "tools.denomination"
-            currency_code: "tools.currency_code"
-            recipient_name: "tools.recipient_name"
-            recipient_email: "tools.recipient_email"
-            delivery_method: "tools.delivery_method"
-            campaign_id: "tools.campaign_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-order
-          description: "Get the status and details of a specific reward order including all rewards and delivery status."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "tremendous.get-order"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-reward
-          description: "Get the delivery status of an individual reward including whether it was delivered and redeemed."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "tremendous.get-reward"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: resend-reward
-          description: "Resend a reward delivery email to a recipient who did not receive it."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "tremendous.resend-reward"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-products
-          description: "Browse the catalog of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity donations) filtered by country or currency."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "tremendous.list-products"
-          with:
-            country: "tools.country"
-            currency_codes: "tools.currency_codes"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-funding-sources
-          description: "List available funding sources (balance, invoice, credit card) to use when creating orders."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "tremendous.list-funding-sources"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-campaigns
-          description: "List reward campaigns to select branding and product catalogs for recipient-choice rewards."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "tremendous.list-campaigns"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-campaign
-          description: "Get campaign details including available products, email branding, and messaging configuration."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "tremendous.get-campaign"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-invoices
-          description: "List invoices for tracking payout program costs and billing history."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "tremendous.list-invoices"
-          with:
-            offset: "tools.offset"
-            limit: "tools.limit"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-webhooks
-          description: "List webhook configurations for monitoring reward delivery notifications."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "tremendous.list-webhooks"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-webhook
-          description: "Configure a webhook endpoint to receive real-time notifications when orders complete or rewards are delivered."
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "tremendous.create-webhook"
-          with:
-            url: "tools.url"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: tremendous-rewards-api
+    description: Unified REST API for sending and managing rewards and payouts.
+    resources:
+    - path: /v1/orders
+      name: orders
+      description: Reward orders for sending payouts
+      operations:
+      - method: GET
+        name: list-orders
+        description: List all reward orders
+        call: tremendous.list-orders
+        with:
+          offset: rest.offset
+          limit: rest.limit
+          created_at_gte: rest.created_at_gte
+          created_at_lte: rest.created_at_lte
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-order
+        description: Create a reward order
+        call: tremendous.create-order
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/orders/{id}
+      name: order-detail
+      description: Order tracking and status
+      operations:
+      - method: GET
+        name: get-order
+        description: Get order status and rewards
+        call: tremendous.get-order
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rewards/{id}
+      name: reward-detail
+      description: Individual reward status
+      operations:
+      - method: GET
+        name: get-reward
+        description: Get reward delivery status
+        call: tremendous.get-reward
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rewards/{id}/resend
+      name: reward-resend
+      description: Resend reward
+      operations:
+      - method: POST
+        name: resend-reward
+        description: Resend reward delivery
+        call: tremendous.resend-reward
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/products
+      name: products
+      description: Available payout products catalog
+      operations:
+      - method: GET
+        name: list-products
+        description: Browse available products
+        call: tremendous.list-products
+        with:
+          country: rest.country
+          currency_codes: rest.currency_codes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/funding-sources
+      name: funding-sources
+      description: Funding sources for paying orders
+      operations:
+      - method: GET
+        name: list-funding-sources
+        description: List funding sources
+        call: tremendous.list-funding-sources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/campaigns
+      name: campaigns
+      description: Reward campaigns (branding and product selection)
+      operations:
+      - method: GET
+        name: list-campaigns
+        description: List campaigns
+        call: tremendous.list-campaigns
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices
+      name: invoices
+      description: Invoices and billing
+      operations:
+      - method: GET
+        name: list-invoices
+        description: List invoices
+        call: tremendous.list-invoices
+        with:
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: tremendous-rewards-mcp
+    transport: http
+    description: MCP server for AI-assisted reward sending, payout management, and incentive program tracking.
+    tools:
+    - name: list-orders
+      description: List reward orders to track incentive program activity and payout history.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: tremendous.list-orders
+      with:
+        offset: tools.offset
+        limit: tools.limit
+        created_at_gte: tools.created_at_gte
+        created_at_lte: tools.created_at_lte
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-order
+      description: Send a reward or payout to a recipient. Specify recipient email, amount, currency, and delivery method
+        (EMAIL, LINK, or PHONE).
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tremendous.create-order
+      with:
+        external_id: tools.external_id
+        funding_source_id: tools.funding_source_id
+        denomination: tools.denomination
+        currency_code: tools.currency_code
+        recipient_name: tools.recipient_name
+        recipient_email: tools.recipient_email
+        delivery_method: tools.delivery_method
+        campaign_id: tools.campaign_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-order
+      description: Get the status and details of a specific reward order including all rewards and delivery status.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: tremendous.get-order
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-reward
+      description: Get the delivery status of an individual reward including whether it was delivered and redeemed.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: tremendous.get-reward
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resend-reward
+      description: Resend a reward delivery email to a recipient who did not receive it.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tremendous.resend-reward
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-products
+      description: Browse the catalog of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity
+        donations) filtered by country or currency.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: tremendous.list-products
+      with:
+        country: tools.country
+        currency_codes: tools.currency_codes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-funding-sources
+      description: List available funding sources (balance, invoice, credit card) to use when creating orders.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: tremendous.list-funding-sources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-campaigns
+      description: List reward campaigns to select branding and product catalogs for recipient-choice rewards.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: tremendous.list-campaigns
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-campaign
+      description: Get campaign details including available products, email branding, and messaging configuration.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: tremendous.get-campaign
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-invoices
+      description: List invoices for tracking payout program costs and billing history.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: tremendous.list-invoices
+      with:
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-webhooks
+      description: List webhook configurations for monitoring reward delivery notifications.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: tremendous.list-webhooks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-webhook
+      description: Configure a webhook endpoint to receive real-time notifications when orders complete or rewards are delivered.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tremendous.create-webhook
+      with:
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
