@@ -1,0 +1,125 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tremendous API — Invoices
+  description: 'Tremendous API — Invoices. 2 operations. Lead operation: List Invoices. Self-contained Naftiko capability
+    covering one Tremendous business surface.'
+  tags:
+  - Tremendous
+  - Invoices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TREMENDOUS_API_KEY: TREMENDOUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tremendous-invoices
+    baseUri: https://testflight.tremendous.com/api/v2
+    description: Tremendous API — Invoices business capability. Self-contained, no shared references.
+    resources:
+    - name: invoices
+      path: /invoices
+      operations:
+      - name: listinvoices
+        method: GET
+        description: List Invoices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: offset
+          in: query
+          type: integer
+        - name: limit
+          in: query
+          type: integer
+    - name: invoices-id
+      path: /invoices/{id}
+      operations:
+      - name: getinvoice
+        method: GET
+        description: Get Invoice
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Invoice ID
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TREMENDOUS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: tremendous-invoices-rest
+    port: 8080
+    description: REST adapter for Tremendous API — Invoices. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/invoices
+      name: invoices
+      description: REST surface for invoices.
+      operations:
+      - method: GET
+        name: listinvoices
+        description: List Invoices
+        call: tremendous-invoices.listinvoices
+        with:
+          offset: rest.offset
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/invoices/{id}
+      name: invoices-id
+      description: REST surface for invoices-id.
+      operations:
+      - method: GET
+        name: getinvoice
+        description: Get Invoice
+        call: tremendous-invoices.getinvoice
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tremendous-invoices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tremendous API — Invoices. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-invoices
+      description: List Invoices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tremendous-invoices.listinvoices
+      with:
+        offset: tools.offset
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-invoice
+      description: Get Invoice
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tremendous-invoices.getinvoice
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,147 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tremendous API — Organizations
+  description: 'Tremendous API — Organizations. 3 operations. Lead operation: List Organizations. Self-contained Naftiko capability
+    covering one Tremendous business surface.'
+  tags:
+  - Tremendous
+  - Organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TREMENDOUS_API_KEY: TREMENDOUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: tremendous-organizations
+    baseUri: https://testflight.tremendous.com/api/v2
+    description: Tremendous API — Organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: organizations
+      path: /organizations
+      operations:
+      - name: listorganizations
+        method: GET
+        description: List Organizations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorganization
+        method: POST
+        description: Create Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: organizations-id
+      path: /organizations/{id}
+      operations:
+      - name: getorganization
+        method: GET
+        description: Get Organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Organization ID
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.TREMENDOUS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: tremendous-organizations-rest
+    port: 8080
+    description: REST adapter for Tremendous API — Organizations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organizations
+      name: organizations
+      description: REST surface for organizations.
+      operations:
+      - method: GET
+        name: listorganizations
+        description: List Organizations
+        call: tremendous-organizations.listorganizations
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createorganization
+        description: Create Organization
+        call: tremendous-organizations.createorganization
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/organizations/{id}
+      name: organizations-id
+      description: REST surface for organizations-id.
+      operations:
+      - method: GET
+        name: getorganization
+        description: Get Organization
+        call: tremendous-organizations.getorganization
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: tremendous-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tremendous API — Organizations. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-organizations
+      description: List Organizations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tremendous-organizations.listorganizations
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-organization
+      description: Create Organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: tremendous-organizations.createorganization
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-organization
+      description: Get Organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: tremendous-organizations.getorganization
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
