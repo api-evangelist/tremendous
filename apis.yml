@@ -95,6 +95,8 @@ common:
     url: capabilities/rewards-and-payouts.yaml
   - type: Vocabulary
     url: vocabulary/tremendous-vocabulary.yml
+  - type: LLMsTxt
+    url: https://developers.tremendous.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
