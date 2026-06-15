@@ -1,65 +1,77 @@
-# Tremendous
+# Tremendous (tremendous)
 
-Tremendous allows businesses to send rewards, incentives, and payouts worldwide using their simple API and dashboard. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations.
+Tremendous allows businesses to send rewards, incentives, and payouts worldwide using their simple API and dashboard. Access 2000+ payout methods including US and global bank transfers, Amazon.com gift cards, Visa and Mastercard prepaid cards, PayPal, Venmo, and charity donations. Supports multi-product rewards (recipient choice) and single-product rewards.
 
-**Website:** [https://www.tremendous.com](https://www.tremendous.com)  
-**API Docs:** [https://developers.tremendous.com](https://developers.tremendous.com)  
-**Sandbox:** [https://testflight.tremendous.com](https://testflight.tremendous.com)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/tremendous/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/tremendous/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags
+
+- Employee Incentives
+- Global Payouts
+- Incentives
+- Market Research
+- Payouts
+- Rewards
+
+## Timestamps
+
+- **Created:** 2025-02-08
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Tremendous API
 
-The Tremendous REST API enables programmatic sending of rewards, incentives, and payouts worldwide. Covers orders, rewards, products, campaigns, funding sources, organizations, members, invoices, and webhooks. Rate limit: 30 requests per 30 seconds.
+The Tremendous REST API enables businesses to programmatically send rewards, incentives, and payouts worldwide. The API covers orders, rewards, products, campaigns, funding sources, organizations, members, invoices, and webhooks. Authentication uses Bearer API keys or OAuth 2.0. Rate limit: 30 requests per 30 seconds.
 
-- **Sandbox URL:** `https://testflight.tremendous.com/api/v2`
-- **Production URL:** `https://www.tremendous.com/api/v2`
-- **Authentication:** Bearer API Key or OAuth 2.0
-- **OpenAPI:** [openapi/tremendous-api-openapi.yml](openapi/tremendous-api-openapi.yml)
+- **Human URL:** [https://developers.tremendous.com/](https://developers.tremendous.com/)
+- **Base URL:** `https://testflight.tremendous.com/api/v2`
 
-## Artifacts
+#### Tags
 
-| Type | File |
-|---|---|
-| OpenAPI | [openapi/tremendous-api-openapi.yml](openapi/tremendous-api-openapi.yml) |
-| JSON Schema (Order) | [json-schema/tremendous-order-schema.json](json-schema/tremendous-order-schema.json) |
-| JSON Schema (Product) | [json-schema/tremendous-product-schema.json](json-schema/tremendous-product-schema.json) |
-| JSON Structure (Order) | [json-structure/tremendous-order-structure.json](json-structure/tremendous-order-structure.json) |
-| JSON-LD Context | [json-ld/tremendous-context.jsonld](json-ld/tremendous-context.jsonld) |
-| Spectral Rules | [rules/tremendous-spectral-rules.yml](rules/tremendous-spectral-rules.yml) |
-| Vocabulary | [vocabulary/tremendous-vocabulary.yml](vocabulary/tremendous-vocabulary.yml) |
+- Employee Incentives
+- Global Payouts
+- Incentives
+- Market Research
+- Payouts
+- Rewards
 
-## Capabilities
+#### Properties
 
-### Shared Definitions
-
-| File | Description |
-|---|---|
-| [capabilities/shared/tremendous-api.yaml](capabilities/shared/tremendous-api.yaml) | Full Tremendous API consumed definition (orders, rewards, products, campaigns, funding sources) |
-
-### Workflow Capabilities
-
-| File | Description |
-|---|---|
-| [capabilities/rewards-and-payouts.yaml](capabilities/rewards-and-payouts.yaml) | Unified rewards and payouts capability (send incentives, track delivery, manage campaigns) |
-
-## Examples
-
-- [examples/tremendous-create-order-example.json](examples/tremendous-create-order-example.json)
+- [Documentation](https://developers.tremendous.com/docs/introduction)
+- [Reference](https://developers.tremendous.com/reference/api-endpoints-overview)
+- [GitHub Organization](https://github.com/tremendous-rewards)
+- [GitHub Repository](https://github.com/tremendous-rewards/api-docs)
+- [GitHub Repository](https://github.com/tremendous-rewards/tremendous-node)
+- [OpenAPI](openapi/tremendous-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/tremendous-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/tremendous-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
+- [LinkedIn](https://www.linkedin.com/company/tremendous-rewards)
 - [Website](https://www.tremendous.com/)
 - [Documentation](https://developers.tremendous.com/)
 - [Sign Up](https://app.tremendous.com/auth/sign_up)
 - [Sandbox](https://testflight.tremendous.com)
 - [GitHub Organization](https://github.com/tremendous-rewards)
+- [SDK](https://github.com/tremendous-rewards/tremendous-node)
+- [Changelog](https://developers.tremendous.com/changelog)
+- [JSON Schema](json-schema/tremendous-order-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/tremendous-product-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/tremendous-order-structure.json)
+- [JSON-LD](json-ld/tremendous-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Spectral Rules](rules/tremendous-spectral-rules.yml)
+- [Vocabulary](vocabulary/tremendous-vocabulary.yml)
+- [L L Ms Txt](https://developers.tremendous.com/llms.txt)
 
 ## Maintainers
 
-**FN:** Kin Lane  
+**FN:** Kin Lane
 **Email:** kin@apievangelist.com
-
-## Tags
-
-Employee Incentives, Global Payouts, Incentives, Market Research, Payouts, Rewards

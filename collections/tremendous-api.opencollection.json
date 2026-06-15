@@ -1,0 +1,478 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tremendous API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/orders",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return (max 100)"
+              },
+              {
+                "name": "created_at_gte",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders created at or after this date"
+              },
+              {
+                "name": "created_at_lte",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders created at or before this date"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all orders in the organization."
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new order to send one or more rewards. An order contains rewards, a funding source, and optional external ID for idempotency."
+        },
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/orders/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Order ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order by its ID."
+        },
+        {
+          "info": {
+            "name": "Approve Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/orders/approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve a pending order that requires manual approval."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/rewards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Reward ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific reward by its ID."
+        },
+        {
+          "info": {
+            "name": "Resend Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/rewards/:id/resend",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Reward ID"
+              }
+            ]
+          },
+          "docs": "Resend the delivery for a reward (e.g., resend the email)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/products",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country (ISO 3166-1 alpha-2)"
+              },
+              {
+                "name": "currency_codes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by currency code (comma-separated)"
+              }
+            ]
+          },
+          "docs": "Returns a list of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity donations, etc.)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Funding Sources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Funding Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/funding_sources"
+          },
+          "docs": "Returns a list of available funding sources for the organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/campaigns"
+          },
+          "docs": "Returns a list of all campaigns in the organization."
+        },
+        {
+          "info": {
+            "name": "Get Campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/campaigns/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Campaign ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific campaign by its ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/organizations"
+          },
+          "docs": "Returns a list of organizations accessible to the authenticated member."
+        },
+        {
+          "info": {
+            "name": "Create Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/organizations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new organization (sub-account) within the platform."
+        },
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/members"
+          },
+          "docs": "Returns a list of members in the organization."
+        },
+        {
+          "info": {
+            "name": "Create Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/members",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invite a new member to the organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/invoices",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of invoices for the organization."
+        },
+        {
+          "info": {
+            "name": "Get Invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific invoice."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/webhooks"
+          },
+          "docs": "Returns webhook configuration for the organization."
+        },
+        {
+          "info": {
+            "name": "Create Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Configure a webhook endpoint for the organization."
+        },
+        {
+          "info": {
+            "name": "Get Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific webhook configuration."
+        },
+        {
+          "info": {
+            "name": "Delete Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://testflight.tremendous.com/api/v2/webhooks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              }
+            ]
+          },
+          "docs": "Remove a webhook configuration from the organization."
+        },
+        {
+          "info": {
+            "name": "Simulate Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/webhooks/:id/simulate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Webhook ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a test event to the webhook endpoint to verify connectivity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

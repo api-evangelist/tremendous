@@ -1,8 +1,10 @@
 aid: tremendous
 name: Tremendous
-description: Tremendous allows businesses to send rewards, incentives, and payouts worldwide using their simple API and dashboard.
-  Access 2000+ payout methods including US and global bank transfers, Amazon.com gift cards, Visa and Mastercard prepaid cards,
-  PayPal, Venmo, and charity donations. Supports multi-product rewards (recipient choice) and single-product rewards.
+description: >-
+  Tremendous allows businesses to send rewards, incentives, and payouts worldwide using their simple API and dashboard.
+  Access 2000+ payout methods including US and global bank transfers, Amazon.com gift cards, Visa and Mastercard prepaid
+  cards, PayPal, Venmo, and charity donations. Supports multi-product rewards (recipient choice) and single-product
+  rewards.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -21,49 +23,32 @@ specificationVersion: '0.19'
 apis:
   - aid: tremendous:tremendous
     name: Tremendous API
-    description: 'The Tremendous REST API enables businesses to programmatically send rewards, incentives, and payouts worldwide.
-      The API covers orders, rewards, products, campaigns, funding sources, organizations, members, invoices, and webhooks.
-      Authentication uses Bearer API keys or OAuth 2.0. Rate limit: 30 requests per 30 seconds.'
+    description: >-
+      The Tremendous REST API enables businesses to programmatically send rewards, incentives, and payouts worldwide.
+      The API covers orders, rewards, products, campaigns, funding sources, organizations, members, invoices, and
+      webhooks. Authentication uses Bearer API keys or OAuth 2.0. Rate limit: 30 requests per 30 seconds.
     humanURL: https://developers.tremendous.com/
     baseURL: https://testflight.tremendous.com/api/v2
     tags:
-    - Employee Incentives
-    - Global Payouts
-    - Incentives
-    - Market Research
-    - Payouts
-    - Rewards
+      - Employee Incentives
+      - Global Payouts
+      - Incentives
+      - Market Research
+      - Payouts
+      - Rewards
     properties:
-    - type: Documentation
-      url: https://developers.tremendous.com/docs/introduction
-    - type: Reference
-      url: https://developers.tremendous.com/reference/api-endpoints-overview
-    - type: GitHubOrganization
-      url: https://github.com/tremendous-rewards
-    - type: GitHubRepository
-      url: https://github.com/tremendous-rewards/api-docs
-    - type: GitHubRepository
-      url: https://github.com/tremendous-rewards/tremendous-node
-    - type: OpenAPI
-      url: openapi/tremendous-api-openapi.yml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-campaigns.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-funding-sources.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-invoices.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-members.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-orders.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-organizations.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-products.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-rewards.yaml
-    - type: NaftikoCapability
-      url: capabilities/tremendous-webhooks.yaml
+      - type: Documentation
+        url: https://developers.tremendous.com/docs/introduction
+      - type: Reference
+        url: https://developers.tremendous.com/reference/api-endpoints-overview
+      - type: GitHubOrganization
+        url: https://github.com/tremendous-rewards
+      - type: GitHubRepository
+        url: https://github.com/tremendous-rewards/api-docs
+      - type: GitHubRepository
+        url: https://github.com/tremendous-rewards/tremendous-node
+      - type: OpenAPI
+        url: openapi/tremendous-api-openapi.yml
 common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/tremendous-rewards
@@ -91,8 +76,6 @@ common:
     url: json-ld/tremendous-context.jsonld
   - type: SpectralRules
     url: rules/tremendous-spectral-rules.yml
-  - type: NaftikoCapabilities
-    url: capabilities/rewards-and-payouts.yaml
   - type: Vocabulary
     url: vocabulary/tremendous-vocabulary.yml
   - type: LLMsTxt

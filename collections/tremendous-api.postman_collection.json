@@ -1,0 +1,3985 @@
+{
+  "item": [
+    {
+      "id": "9241fc9f-dfb7-429a-a100-d2163de0fc65",
+      "name": "Orders",
+      "description": {
+        "content": "Create and manage reward orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ffc8f2f-f920-4bde-9484-6a4df01a5be3",
+          "name": "List Orders",
+          "request": {
+            "name": "List Orders",
+            "description": {
+              "content": "Returns a paginated list of all orders in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of results to return (max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_gte",
+                  "value": "<dateTime>",
+                  "description": "Filter orders created at or after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_lte",
+                  "value": "<dateTime>",
+                  "description": "Filter orders created at or before this date"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8fb15a0a-18b8-4248-aba0-2e054d098958",
+              "name": "List of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_lte",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"status\": \"APPROVED\",\n      \"payment\": {\n        \"funding_source_id\": \"string\",\n        \"subtotal\": {\n          \"currency_code\": \"string\",\n          \"value\": 8116.413341111785\n        },\n        \"total\": {\n          \"currency_code\": \"string\",\n          \"value\": 9869.953704976617\n        }\n      },\n      \"rewards\": [\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"FAILED\",\n          \"value\": {\n            \"denomination\": 902.2982672237367,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"sVXH9do9FE@blReSKxCkzJNCKoy.sx\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"PHONE\",\n            \"status\": \"string\",\n            \"delivered_at\": \"2007-01-04T16:32:33.236Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"2018-09-10T08:20:23.632Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"DELIVERED\",\n          \"value\": {\n            \"denomination\": 2123.5502776071326,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"5qQbyEl99DC5-t@ckKRLe.ql\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"PHONE\",\n            \"status\": \"string\",\n            \"delivered_at\": \"2006-10-03T01:17:49.234Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"2018-10-20T05:29:40.347Z\"\n        }\n      ],\n      \"created_at\": \"1990-02-26T01:16:27.540Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"status\": \"FAILED\",\n      \"payment\": {\n        \"funding_source_id\": \"string\",\n        \"subtotal\": {\n          \"currency_code\": \"string\",\n          \"value\": 9046.095621404831\n        },\n        \"total\": {\n          \"currency_code\": \"string\",\n          \"value\": 2027.8003937468402\n        }\n      },\n      \"rewards\": [\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"PROCESSING\",\n          \"value\": {\n            \"denomination\": 5048.860712507632,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"I8lPJ@EkyZGWhBPXThRSCFqCYegEhtXri.vrak\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"PHONE\",\n            \"status\": \"string\",\n            \"delivered_at\": \"1970-04-23T03:38:56.325Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"1984-10-16T00:43:41.476Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"PENDING\",\n          \"value\": {\n            \"denomination\": 620.295462407241,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"IEzZndnDf@aZBsfoMbKRAyvrwWmVFvLh.deu\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"EMAIL\",\n            \"status\": \"string\",\n            \"delivered_at\": \"1959-03-04T23:49:20.838Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"1952-03-26T15:26:19.699Z\"\n        }\n      ],\n      \"created_at\": \"2017-02-02T05:10:34.976Z\"\n    }\n  ],\n  \"total_count\": 4876\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca102628-2798-45b8-be67-69ec1093bbe5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_lte",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "473de7b9-9cc5-4d23-9c5d-71151c3886fe",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_lte",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a4b0f7b-9262-4fc0-a214-0fcb30979b68",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Create a new order to send one or more rewards. An order contains rewards, a funding source, and optional external ID for idempotency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": \"<number>\",\n      \"currency_code\": \"<string>\"\n    },\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"<string>\",\n    \"products\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"language\": \"<string>\"\n  },\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e705d950-db61-4266-9bb6-7a1021ab64aa",
+              "name": "Order created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"id\": \"string\",\n    \"external_id\": \"string\",\n    \"status\": \"PROCESSING\",\n    \"payment\": {\n      \"funding_source_id\": \"string\",\n      \"subtotal\": {\n        \"currency_code\": \"string\",\n        \"value\": 894.1251715960641\n      },\n      \"total\": {\n        \"currency_code\": \"string\",\n        \"value\": 8371.691480872125\n      }\n    },\n    \"rewards\": [\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"CANCELED\",\n        \"value\": {\n          \"denomination\": 6501.026965998234,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"Qwh8aw9BS@UkekMnNJqDLnWXUH.lw\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"PHONE\",\n          \"status\": \"string\",\n          \"delivered_at\": \"1953-03-03T11:51:18.630Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"1962-06-12T08:09:41.767Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"PROCESSING\",\n        \"value\": {\n          \"denomination\": 8274.374320362478,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"IoyBkUaNTdGrj@BDjYnhrPoU.pffi\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"LINK\",\n          \"status\": \"string\",\n          \"delivered_at\": \"2017-09-30T12:02:55.004Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"1948-05-07T05:27:40.212Z\"\n      }\n    ],\n    \"created_at\": \"1984-09-10T06:50:40.835Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81274abd-727d-4f6d-9bf5-ba80364895c9",
+              "name": "Bad request - validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "385543fd-90d1-4ee1-93ab-11fb578ebc11",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b7f7133a-d8ac-4748-a22d-2c613724aa59",
+              "name": "Insufficient funds",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fcca7bee-c030-4dbc-8bde-a7dee04f3d4d",
+              "name": "Conflict - duplicate external_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50328d59-981f-476e-aa35-35cbe1efc1d9",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "073a30ed-1ffc-4bf9-a648-4ae1211b2c8f",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 2033.930018790312,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"xzq@AYUReoVAETLyKcJAaxOqIofxOIyGiHg.czyo\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f5ee55e1-b2d8-472e-b642-3817869c34f3",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Retrieve details of a specific order by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "befb5ffc-e49a-41ae-a6ef-b0e67780e12a",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"id\": \"string\",\n    \"external_id\": \"string\",\n    \"status\": \"PROCESSING\",\n    \"payment\": {\n      \"funding_source_id\": \"string\",\n      \"subtotal\": {\n        \"currency_code\": \"string\",\n        \"value\": 894.1251715960641\n      },\n      \"total\": {\n        \"currency_code\": \"string\",\n        \"value\": 8371.691480872125\n      }\n    },\n    \"rewards\": [\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"CANCELED\",\n        \"value\": {\n          \"denomination\": 6501.026965998234,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"Qwh8aw9BS@UkekMnNJqDLnWXUH.lw\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"PHONE\",\n          \"status\": \"string\",\n          \"delivered_at\": \"1953-03-03T11:51:18.630Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"1962-06-12T08:09:41.767Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"PROCESSING\",\n        \"value\": {\n          \"denomination\": 8274.374320362478,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"IoyBkUaNTdGrj@BDjYnhrPoU.pffi\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"LINK\",\n          \"status\": \"string\",\n          \"delivered_at\": \"2017-09-30T12:02:55.004Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"1948-05-07T05:27:40.212Z\"\n      }\n    ],\n    \"created_at\": \"1984-09-10T06:50:40.835Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1c1629f-cbb4-4f41-804b-aafe1bdeaf34",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2117d6f5-cb8a-4b84-bf33-7a9e216f24f0",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "649d6e8d-f46a-4aa6-8163-527b669325a0",
+          "name": "Approve Order",
+          "request": {
+            "name": "Approve Order",
+            "description": {
+              "content": "Approve a pending order that requires manual approval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ebf9323f-f005-405b-b4f1-a4719f8f0d44",
+              "name": "Order approved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b02c7ac5-8dcc-4692-92a9-62d65fddf370",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3dbb7e3e-a223-4bea-b86d-7c5ea946fcce",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "420787ee-1a48-44a9-bd61-b0b6e9f1af4b",
+      "name": "Rewards",
+      "description": {
+        "content": "Manage individual rewards within orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0bd9f576-a629-4e38-bfcb-0754259c1b24",
+          "name": "Get Reward",
+          "request": {
+            "name": "Get Reward",
+            "description": {
+              "content": "Retrieve details of a specific reward by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Reward ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86275ce1-aa0f-4c1d-ad6d-4e0ce41d6809",
+              "name": "Reward details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reward ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reward\": {\n    \"id\": \"string\",\n    \"order_id\": \"string\",\n    \"status\": \"FAILED\",\n    \"value\": {\n      \"denomination\": 491.94274972393816,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"CE-Q9zkCS34@tOtUDtqSxkcwiDagRQZZmxojldCGIG.yvnm\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\",\n      \"status\": \"string\",\n      \"delivered_at\": \"1952-07-12T02:49:57.953Z\"\n    },\n    \"campaign_id\": \"string\",\n    \"created_at\": \"2003-09-24T06:36:34.366Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4824b6c8-0bf8-428b-bd46-f95055946c91",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reward ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c94b94bb-130c-40f7-8faa-dc01540334e3",
+              "name": "Reward not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reward ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d7050c6-4183-400c-8f4f-50ac0d3b33b8",
+          "name": "Resend Reward",
+          "request": {
+            "name": "Resend Reward",
+            "description": {
+              "content": "Resend the delivery for a reward (e.g., resend the email).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewards",
+                ":id",
+                "resend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Reward ID"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21edcc0a-99c5-4c2b-8137-bb7143434438",
+              "name": "Reward resent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reward ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "971a8f20-7b30-42aa-8651-04f96b95c516",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reward ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dcc2e86-3222-4742-be5d-9b530bb1193a",
+              "name": "Reward not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id",
+                    "resend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reward ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "8e92533c-2922-4576-b6b8-a472041af9c9",
+      "name": "Products",
+      "description": {
+        "content": "Browse available payout products and gift cards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5142fabc-0302-4636-995a-04cfa5f2f6d6",
+          "name": "List Products",
+          "request": {
+            "name": "List Products",
+            "description": {
+              "content": "Returns a list of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity donations, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter by country (ISO 3166-1 alpha-2)"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency_codes",
+                  "value": "<string>",
+                  "description": "Filter by currency code (comma-separated)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "04b7a7c4-90e2-4a5d-bfcb-e15aa2f09747",
+              "name": "List of products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency_codes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"PAYPAL\",\n      \"currency_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countries\": [\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"skus\": [\n        {\n          \"min\": 9835.556853074671,\n          \"max\": 4109.981540191179,\n          \"denomination\": 9275.248897299425\n        },\n        {\n          \"min\": 7847.6453959393,\n          \"max\": 8963.205494204785,\n          \"denomination\": 6970.867998615504\n        }\n      ],\n      \"image_url\": \"http://PPkrTKjBCqbTLbulMzzreCpC.naduaVRZ19wy9yUtMocTMvv,DxZBMe0ZxD+\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"VENMO\",\n      \"currency_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countries\": [\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"skus\": [\n        {\n          \"min\": 590.9789012276168,\n          \"max\": 4766.850280733128,\n          \"denomination\": 9954.785244289807\n        },\n        {\n          \"min\": 6839.5341013432435,\n          \"max\": 9365.59771724029,\n          \"denomination\": 3060.1061492994772\n        }\n      ],\n      \"image_url\": \"https://pcc.swEuotwhiM\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9977e862-b9ee-4500-90e9-ed0df71cf38a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency_codes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "29aa3665-85ca-4dd0-8300-8d6a3d882dd6",
+      "name": "Funding Sources",
+      "description": {
+        "content": "Manage funding sources for sending rewards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f07f42c4-560a-4d7b-bcb1-0b33bebbc1b0",
+          "name": "List Funding Sources",
+          "request": {
+            "name": "List Funding Sources",
+            "description": {
+              "content": "Returns a list of available funding sources for the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "funding_sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28772e0e-8abf-4b01-b846-8eba575de590",
+              "name": "List of funding sources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "funding_sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"funding_sources\": [\n    {\n      \"id\": \"string\",\n      \"method\": \"INVOICE\",\n      \"meta\": {},\n      \"balance\": {\n        \"currency_code\": \"string\",\n        \"amount\": 4140.443688026566\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"method\": \"BALANCE\",\n      \"meta\": {},\n      \"balance\": {\n        \"currency_code\": \"string\",\n        \"amount\": 8309.580232078664\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c04b1a61-1882-4250-8b3a-7b8858594e1d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "funding_sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "38a5d0df-d674-4f08-a9bc-b0ce80ea8044",
+      "name": "Campaigns",
+      "description": {
+        "content": "Manage reward presentation and product catalogs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62fe7bb0-41ba-49be-bf76-34e40beb2b21",
+          "name": "List Campaigns",
+          "request": {
+            "name": "List Campaigns",
+            "description": {
+              "content": "Returns a list of all campaigns in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21150be7-c7cd-49aa-9e96-a6e5bef80fe1",
+              "name": "List of campaigns",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"campaigns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"email_style\": {\n        \"logo\": \"http://ovsoTslxW.ebvfOH-KArp6SA+B-uWRdq\",\n        \"subject\": \"string\",\n        \"body\": \"string\"\n      },\n      \"products\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"email_style\": {\n        \"logo\": \"https://IGmwo.skC6C2T5VVehiF.1v.iMxa4NxO9CaJgWId3\",\n        \"subject\": \"string\",\n        \"body\": \"string\"\n      },\n      \"products\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea8b1e50-e9f1-4fe1-ab39-b3a195446505",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b536932a-16a7-48b5-a1e5-7ccf5139238f",
+          "name": "Get Campaign",
+          "request": {
+            "name": "Get Campaign",
+            "description": {
+              "content": "Retrieve details of a specific campaign by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Campaign ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a78024a-880e-4d59-b843-c69e705e1396",
+              "name": "Campaign details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Campaign ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"campaign\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"email_style\": {\n      \"logo\": \"https://bJmWgKtOoUmuFh.ppzml-kitRz1r8ynXzJr4HGN3OUQr9F5+eCzkpZ.bcSWUGJmVnzh4hWy2X3CfpAt.N-\",\n      \"subject\": \"string\",\n      \"body\": \"string\"\n    },\n    \"products\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb56a2a4-4ed0-460d-8f49-68fe44ebff37",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Campaign ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "236e9f96-0d55-49ad-9076-14434456345d",
+              "name": "Campaign not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Campaign ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "692fa487-7893-4fbc-8eb0-6c4b1b5d176d",
+      "name": "Organizations",
+      "description": {
+        "content": "Manage organizations (team accounts)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02359ddb-65f2-4ad5-9325-c269c27cce7f",
+          "name": "List Organizations",
+          "request": {
+            "name": "List Organizations",
+            "description": {
+              "content": "Returns a list of organizations accessible to the authenticated member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee5eb85c-4fe4-4bb7-aea8-4405043a1155",
+              "name": "List of organizations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organizations\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"website\": \"http://GUcNxWyoygWzGJAXzzmBdGImjDva.edfNX9QVSwbfM+Xgp6HcK.qoaSI6ydTGop5H\",\n      \"with_api_credentials\": false,\n      \"status\": \"ACTIVE\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"website\": \"http://bLmmxeTruPkGFDHolrqIuE.evbI6yXgL4fHTHQ9xPpmrXZR6xhTbeXokZ8W1BSJl82djFv1tpzOlYwj9N9QuqpRHp-ibp\",\n      \"with_api_credentials\": true,\n      \"status\": \"INACTIVE\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a162ca4-6714-45f6-b61f-bd5c77246120",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc0f7110-c2b4-429c-9ccc-40d080e6f6e6",
+          "name": "Create Organization",
+          "request": {
+            "name": "Create Organization",
+            "description": {
+              "content": "Create a new organization (sub-account) within the platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d7aabd6-4f81-4350-a638-c91bb78307c8",
+              "name": "Organization created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organization\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"https://ExUgcQZcQm.eseci8ZwNJsl\",\n    \"with_api_credentials\": false,\n    \"status\": \"INACTIVE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "798a6845-c5a3-4391-9fca-5fc8e28a6479",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c754a926-7a89-4e2b-be7d-8ce9d357ef08",
+          "name": "Get Organization",
+          "request": {
+            "name": "Get Organization",
+            "description": {
+              "content": "Retrieve details of a specific organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "organizations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Organization ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85d975fe-d218-4019-9029-f05fcfcef967",
+              "name": "Organization details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"organization\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"https://ExUgcQZcQm.eseci8ZwNJsl\",\n    \"with_api_credentials\": false,\n    \"status\": \"INACTIVE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cca201f3-50d6-48c4-b6da-ee8f65d7c1da",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fafa303-cfe3-47c3-8d54-28122c3e391a",
+              "name": "Organization not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7a4865ba-a535-4cda-98bf-79b05bd29e30",
+      "name": "Members",
+      "description": {
+        "content": "Manage organization members",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6971d6cf-3de4-4a18-ab10-9c8736e06632",
+          "name": "List Members",
+          "request": {
+            "name": "List Members",
+            "description": {
+              "content": "Returns a list of members in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "242c4ab4-82ec-4503-8c53-de616b8fbbf3",
+              "name": "List of members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"IT67PlYzj5UR@PsOwNYNHMk.he\",\n      \"role\": \"MEMBER\",\n      \"status\": \"INACTIVE\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"omd4hQ@GYnN.ap\",\n      \"role\": \"MEMBER\",\n      \"status\": \"PENDING\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42520923-396d-4966-8bed-d8649efbf499",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffd3329e-b2ea-4aef-b20f-2b9e1c43f245",
+          "name": "Create Member",
+          "request": {
+            "name": "Create Member",
+            "description": {
+              "content": "Invite a new member to the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac7d6273-4ceb-4200-a18d-d9fda45fcc35",
+              "name": "Member created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88178422-1ec3-4dee-81a2-75174cf62885",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d64562fc-981d-4148-a6cd-e4b46acf00bc",
+      "name": "Invoices",
+      "description": {
+        "content": "View and manage invoices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5f83cab4-782b-41df-9057-2151324f8a10",
+          "name": "List Invoices",
+          "request": {
+            "name": "List Invoices",
+            "description": {
+              "content": "Returns a list of invoices for the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cd713e6-3913-4c06-8e09-6d4c2c62c561",
+              "name": "List of invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoices\": [\n    {\n      \"id\": \"string\",\n      \"po_number\": \"string\",\n      \"amount\": {\n        \"currency_code\": \"string\",\n        \"value\": 7150.967995292736\n      },\n      \"remaining\": {\n        \"currency_code\": \"string\",\n        \"value\": 6645.437776587605\n      },\n      \"status\": \"PARTIAL\",\n      \"created_at\": \"1971-04-26T10:11:18.295Z\",\n      \"due_at\": \"1999-11-09T10:04:32.544Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"po_number\": \"string\",\n      \"amount\": {\n        \"currency_code\": \"string\",\n        \"value\": 3612.0038216840235\n      },\n      \"remaining\": {\n        \"currency_code\": \"string\",\n        \"value\": 8925.844041084461\n      },\n      \"status\": \"PAID\",\n      \"created_at\": \"1971-12-16T15:47:27.713Z\",\n      \"due_at\": \"1953-12-17T09:58:16.543Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7aca51a-7393-4574-9b20-72b277948a67",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25c01261-cb4a-438b-bf20-b00525aa4d9d",
+          "name": "Get Invoice",
+          "request": {
+            "name": "Get Invoice",
+            "description": {
+              "content": "Retrieve details of a specific invoice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Invoice ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a8cc4bda-8e07-49b0-a798-6c6263fa2460",
+              "name": "Invoice details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoice\": {\n    \"id\": \"string\",\n    \"po_number\": \"string\",\n    \"amount\": {\n      \"currency_code\": \"string\",\n      \"value\": 4100.27534162444\n    },\n    \"remaining\": {\n      \"currency_code\": \"string\",\n      \"value\": 6736.598999348862\n    },\n    \"status\": \"OVERDUE\",\n    \"created_at\": \"1994-11-12T21:58:11.785Z\",\n    \"due_at\": \"2024-05-15T05:24:09.249Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf19bdc7-b664-430a-953b-75c808ee3e19",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ee58846-c95f-4c83-8ff2-d59b822ba88e",
+              "name": "Invoice not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0deab509-0aed-4ea7-a7e9-5b7563ecae8c",
+      "name": "Webhooks",
+      "description": {
+        "content": "Configure webhook notifications",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "379a2155-d643-4a2d-a79e-331a30cb6de1",
+          "name": "List Webhooks",
+          "request": {
+            "name": "List Webhooks",
+            "description": {
+              "content": "Returns webhook configuration for the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6fcd48c-2f70-4bce-bfde-945238b2b6f3",
+              "name": "Webhook configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhooks\": [\n    {\n      \"id\": \"string\",\n      \"url\": \"http://BgFleqSGlc.pwZjS65\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_at\": \"2000-03-14T06:30:13.826Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"url\": \"http://qYARuMUomIuteT.eewbS66DT9BczANJ0,uqTb+2sZNLDjFq75FIf\",\n      \"events\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_at\": \"1993-01-27T16:32:24.847Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d767215c-1578-4a4a-af30-88b98b8f70df",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "076ab8a6-c1ab-4660-9cc2-b66bbdbb5d0f",
+          "name": "Create Webhook",
+          "request": {
+            "name": "Create Webhook",
+            "description": {
+              "content": "Configure a webhook endpoint for the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"private_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dc0c8cd1-5dad-4f44-a80d-6e9365934c99",
+              "name": "Webhook created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"private_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"id\": \"string\",\n    \"url\": \"https://cdmIiBEUgEaodAlvoKhXHlxlMOI.wcwzKKRaTmMNn8HP.WUTlDGlnJrC3Ggh9PMBOu6xkVn+mZWx-QyN5KpyBy19YGmsals\",\n    \"events\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_at\": \"1979-08-31T00:28:51.024Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d745bb05-3bae-4e7f-9e9d-b2ff3cba6a47",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"<uri>\",\n  \"private_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c94c107-bfd9-4def-9d4f-9ec4352e185b",
+          "name": "Get Webhook",
+          "request": {
+            "name": "Get Webhook",
+            "description": {
+              "content": "Retrieve details of a specific webhook configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Webhook ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f94fecf1-33a6-4e52-9073-00e66a99c7fb",
+              "name": "Webhook details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"webhook\": {\n    \"id\": \"string\",\n    \"url\": \"https://cdmIiBEUgEaodAlvoKhXHlxlMOI.wcwzKKRaTmMNn8HP.WUTlDGlnJrC3Ggh9PMBOu6xkVn+mZWx-QyN5KpyBy19YGmsals\",\n    \"events\": [\n      \"string\",\n      \"string\"\n    ],\n    \"created_at\": \"1979-08-31T00:28:51.024Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c08a6e54-46f6-46a7-9892-93751db2deca",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7836f0ab-b4a2-49b5-b7e3-11877c0a990e",
+              "name": "Webhook not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66bf2b7b-f10e-4b22-add5-ec51075aaf3b",
+          "name": "Delete Webhook",
+          "request": {
+            "name": "Delete Webhook",
+            "description": {
+              "content": "Remove a webhook configuration from the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Webhook ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85b765d1-64b2-4e0b-af40-8d8c4bd72fb1",
+              "name": "Webhook deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b923994-f185-44d2-8d92-23ae9a86ec45",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "39f68bfd-153c-4119-b1aa-39b0dd31e6a4",
+              "name": "Webhook not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8fe9604d-1e4e-422f-99ac-87f0d31e4632",
+          "name": "Simulate Webhook",
+          "request": {
+            "name": "Simulate Webhook",
+            "description": {
+              "content": "Send a test event to the webhook endpoint to verify connectivity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhooks",
+                ":id",
+                "simulate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Webhook ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d09a54e8-096b-48a4-b2ea-449f9f6e1fbc",
+              "name": "Simulation sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4719e83c-48d9-4a3e-996b-c6e151bb3cb2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f41c312-a9fb-416c-9333-6cfeaa21b9a5",
+              "name": "Webhook not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhooks",
+                    ":id",
+                    "simulate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Webhook ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://testflight.tremendous.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b1231496-8281-476b-bb0b-c777665af342",
+    "name": "Tremendous API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+      "type": "text/plain"
+    }
+  }
+}
