@@ -56,13 +56,13 @@ common:
     url: https://www.tremendous.com/
   - type: Documentation
     url: https://developers.tremendous.com/
-  - type: SignUp
+  - type: Signup
     url: https://app.tremendous.com/auth/sign_up
   - type: Sandbox
     url: https://testflight.tremendous.com
   - type: GitHubOrganization
     url: https://github.com/tremendous-rewards
-  - type: SDK
+  - type: SDKs
     url: https://github.com/tremendous-rewards/tremendous-node
   - type: ChangeLog
     url: https://developers.tremendous.com/changelog
@@ -78,7 +78,7 @@ common:
     url: rules/tremendous-spectral-rules.yml
   - type: Vocabulary
     url: vocabulary/tremendous-vocabulary.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.tremendous.com/llms.txt
 maintainers:
   - FN: Kin Lane
