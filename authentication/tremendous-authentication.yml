@@ -1,0 +1,27 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tremendous-api-openapi.yml
+summary:
+  types:
+  - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token authentication using a Tremendous API key. Generate API keys in
+    your Tremendous dashboard Settings > API.
+  sources:
+  - openapi/tremendous-api-openapi.yml
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.tremendous.com/oauth/authorize
+    tokenUrl: https://www.tremendous.com/oauth/token
+    scopes: 3
+  description: OAuth 2.0 for third-party integrations
+  sources:
+  - openapi/tremendous-api-openapi.yml
