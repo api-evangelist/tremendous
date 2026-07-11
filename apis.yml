@@ -50,6 +50,10 @@ apis:
       - type: OpenAPI
         url: openapi/tremendous-api-openapi.yml
 common:
+  - type: Authentication
+    url: authentication/tremendous-authentication.yml
+  - type: OAuthScopes
+    url: scopes/tremendous-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/tremendous-rewards
   - type: Website
@@ -80,6 +84,8 @@ common:
     url: vocabulary/tremendous-vocabulary.yml
   - type: LlmsText
     url: https://developers.tremendous.com/llms.txt
+  - url: https://www.tremendous.com/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

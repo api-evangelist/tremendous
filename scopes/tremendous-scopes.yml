@@ -1,0 +1,30 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tremendous-api-openapi.yml
+schemes:
+- name: OAuth2
+  source: openapi/tremendous-api-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://www.tremendous.com/oauth/authorize
+    tokenUrl: https://www.tremendous.com/oauth/token
+  description: OAuth 2.0 for third-party integrations
+scopes:
+- scope: manage
+  description: Manage organization settings, members, and webhooks
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tremendous-api-openapi.yml
+- scope: read
+  description: Read access to orders, rewards, products, and funding sources
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tremendous-api-openapi.yml
+- scope: write
+  description: Create orders and rewards
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/tremendous-api-openapi.yml
