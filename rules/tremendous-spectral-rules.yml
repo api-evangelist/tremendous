@@ -1,108 +1,181 @@
+# tremendous — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 2/2 servers on tremendous.com
+#   - path-params-casing: snake @ 100% (n=9)
+#   - query-params-casing: snake @ 100% (n=8)
+#   - operationid-casing: camel @ 100% (n=22)
+#   - schema-names-casing: pascal @ 100% (n=12)
+#   - schema-properties-casing: snake @ 100% (n=63)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - operation-documents-401: 100% adherence
+#   - pagination params observed: ['limit', 'offset']
+#   - merge: kept 12 existing, added 8 measured, upgraded 0
+#   - added: servers-https-only, servers-expected-domain, path-params-casing, query-params-casing, schema-names-casing, schema-properties-casing, operation-documents-401, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   tremendous-operation-id-camel-case:
     description: Operation IDs must use camelCase
-    message: "Operation ID '{{value}}' must use camelCase"
+    message: Operation ID '{{value}}' must use camelCase
     severity: warn
-    given: "$.paths[*][*].operationId"
+    given: $.paths[*][*].operationId
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]*$"
-
+        match: ^[a-z][a-zA-Z0-9]*$
   tremendous-summary-title-case:
     description: Operation summaries must use Title Case
-    message: "Summary '{{value}}' should use Title Case"
+    message: Summary '{{value}}' should use Title Case
     severity: warn
-    given: "$.paths[*][*].summary"
+    given: $.paths[*][*].summary
     then:
       function: pattern
       functionOptions:
-        match: "^[A-Z][a-zA-Z0-9 /()+&-]*$"
-
+        match: ^[A-Z][a-zA-Z0-9 /()+&-]*$
   tremendous-security-defined:
     description: All operations must define security requirements
-    message: "Operation must define security requirements"
+    message: Operation must define security requirements
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: security
       function: defined
-
   tremendous-response-200-get:
     description: All GET operations must define a 200 response
-    message: "GET operation must define a 200 success response"
+    message: GET operation must define a 200 success response
     severity: error
-    given: "$.paths[*].get"
+    given: $.paths[*].get
     then:
       field: responses.200
       function: defined
-
   tremendous-response-401-defined:
     description: Authenticated operations should define a 401 response
-    message: "Operation should define 401 Unauthorized"
+    message: Operation should define 401 Unauthorized
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: responses.401
       function: defined
-
   tremendous-tag-defined:
     description: All operations must have at least one tag
-    message: "Operation must include at least one tag"
+    message: Operation must include at least one tag
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: tags
       function: defined
-
   tremendous-bearer-auth:
     description: Tremendous API uses Bearer token (API key) authentication
-    message: "Use BearerAuth security scheme"
+    message: Use BearerAuth security scheme
     severity: info
-    given: "$.components.securitySchemes.BearerAuth"
+    given: $.components.securitySchemes.BearerAuth
     then:
       function: defined
-
   tremendous-path-snake-case:
     description: Path parameters use snake_case
-    message: "Path segments should use snake_case or kebab-case"
+    message: Path segments should use snake_case or kebab-case
     severity: warn
-    given: "$.paths[*]~"
+    given: $.paths[*]~
     then:
       function: pattern
       functionOptions:
-        match: "^(/[a-z][a-z0-9_-]*(/[a-z][a-z0-9_-]*|/\\{[a-zA-Z][a-zA-Z0-9_]*\\})*)+$"
-
+        match: ^(/[a-z][a-z0-9_-]*(/[a-z][a-z0-9_-]*|/\{[a-zA-Z][a-zA-Z0-9_]*\})*)+$
   tremendous-post-request-body:
     description: POST operations should define a request body
-    message: "POST operation should include a requestBody"
+    message: POST operation should include a requestBody
     severity: warn
-    given: "$.paths[*].post"
+    given: $.paths[*].post
     then:
       field: requestBody
       function: defined
-
   tremendous-rate-limit-response:
     description: Tremendous API enforces rate limits - 429 should be documented
-    message: "Operation should define 429 Too Many Requests response"
+    message: Operation should define 429 Too Many Requests response
     severity: info
-    given: "$.paths[*][get,post]"
+    given: $.paths[*][get,post]
     then:
       field: responses.429
       function: defined
-
   tremendous-idempotency-external-id:
     description: Create operations should document external_id for idempotency
-    message: "Order creation supports external_id for idempotent requests"
+    message: Order creation supports external_id for idempotent requests
     severity: info
-    given: "$.paths['/orders'].post.requestBody.content.application/json.schema"
+    given: $.paths['/orders'].post.requestBody.content.application/json.schema
     then:
       function: defined
-
   tremendous-list-pagination:
     description: List operations should support pagination with offset and limit
-    message: "List endpoint should support offset and limit parameters"
+    message: List endpoint should support offset and limit parameters
     severity: info
-    given: "$.paths[*].get"
+    given: $.paths[*].get
     then:
       function: defined
+  servers-https-only:
+    description: Server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: ^https://
+  servers-expected-domain:
+    description: Server URLs should be on the tremendous.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: tremendous\.com
+  path-params-casing:
+    description: Path parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: snake
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  operation-documents-401:
+    description: Operations should document a 401 response (documented on 100% of this API's operations).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].responses
+    then:
+      field: '401'
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy
