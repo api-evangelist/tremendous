@@ -50,6 +50,8 @@ apis:
       - type: OpenAPI
         url: openapi/tremendous-api-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/tremendous-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/tremendous-vulnerability-disclosure.yml
   - type: DomainSecurity
