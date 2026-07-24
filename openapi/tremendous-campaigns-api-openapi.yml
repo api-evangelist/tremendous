@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: Tremendous Campaigns API
+  description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+- url: https://testflight.tremendous.com/api/v2
+  description: Sandbox (testing)
+- url: https://www.tremendous.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Campaigns
+  description: Manage reward presentation and product catalogs
+paths:
+  /campaigns:
+    get:
+      operationId: listCampaigns
+      summary: List Campaigns
+      description: Returns a list of all campaigns in the organization.
+      tags:
+      - Campaigns
+      responses:
+        '200':
+          description: List of campaigns
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Campaign'
+        '401':
+          description: Unauthorized
+  /campaigns/{id}:
+    get:
+      operationId: getCampaign
+      summary: Get Campaign
+      description: Retrieve details of a specific campaign by its ID.
+      tags:
+      - Campaigns
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Campaign ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Campaign details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaign:
+                    $ref: '#/components/schemas/Campaign'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Campaign not found
+components:
+  schemas:
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique campaign identifier
+        name:
+          type: string
+          description: Campaign name
+        description:
+          type: string
+          description: Campaign description shown to recipients
+        email_style:
+          type: object
+          properties:
+            logo:
+              type: string
+              format: uri
+            subject:
+              type: string
+            body:
+              type: string
+          description: Email branding and messaging
+        products:
+          type: array
+          items:
+            type: string
+          description: Product IDs available in this campaign
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Tremendous API key. Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks

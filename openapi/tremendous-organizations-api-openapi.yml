@@ -1,0 +1,145 @@
+openapi: 3.1.0
+info:
+  title: Tremendous Campaigns Organizations API
+  description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+- url: https://testflight.tremendous.com/api/v2
+  description: Sandbox (testing)
+- url: https://www.tremendous.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Organizations
+  description: Manage organizations (team accounts)
+paths:
+  /organizations:
+    get:
+      operationId: listOrganizations
+      summary: List Organizations
+      description: Returns a list of organizations accessible to the authenticated member.
+      tags:
+      - Organizations
+      responses:
+        '200':
+          description: List of organizations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createOrganization
+      summary: Create Organization
+      description: Create a new organization (sub-account) within the platform.
+      tags:
+      - Organizations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Organization name
+                website:
+                  type: string
+                  description: Organization website URL
+              required:
+              - name
+      responses:
+        '201':
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+  /organizations/{id}:
+    get:
+      operationId: getOrganization
+      summary: Get Organization
+      description: Retrieve details of a specific organization.
+      tags:
+      - Organizations
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Organization ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Organization details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organization:
+                    $ref: '#/components/schemas/Organization'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Organization not found
+components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier
+        name:
+          type: string
+          description: Organization name
+        website:
+          type: string
+          format: uri
+          description: Organization website
+        with_api_credentials:
+          type: boolean
+          description: Whether organization has API credentials enabled
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          description: Organization status
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Tremendous API key. Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks

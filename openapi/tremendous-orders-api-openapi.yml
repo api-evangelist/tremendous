@@ -1,0 +1,345 @@
+openapi: 3.1.0
+info:
+  title: Tremendous Campaigns Orders API
+  description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+- url: https://testflight.tremendous.com/api/v2
+  description: Sandbox (testing)
+- url: https://www.tremendous.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Orders
+  description: Create and manage reward orders
+paths:
+  /orders:
+    get:
+      operationId: listOrders
+      summary: List Orders
+      description: Returns a paginated list of all orders in the organization.
+      tags:
+      - Orders
+      parameters:
+      - name: offset
+        in: query
+        description: Pagination offset
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        description: Maximum number of results to return (max 100)
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+      - name: created_at_gte
+        in: query
+        description: Filter orders created at or after this date
+        schema:
+          type: string
+          format: date-time
+      - name: created_at_lte
+        in: query
+        description: Filter orders created at or before this date
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Order'
+                  total_count:
+                    type: integer
+        '401':
+          description: Unauthorized
+        '429':
+          description: Rate limit exceeded
+    post:
+      operationId: createOrder
+      summary: Create Order
+      description: Create a new order to send one or more rewards. An order contains rewards, a funding source, and optional external ID for idempotency.
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '200':
+          description: Order created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    $ref: '#/components/schemas/Order'
+        '400':
+          description: Bad request - validation error
+        '401':
+          description: Unauthorized
+        '402':
+          description: Insufficient funds
+        '409':
+          description: Conflict - duplicate external_id
+        '422':
+          description: Unprocessable entity
+        '429':
+          description: Rate limit exceeded
+  /orders/{id}:
+    get:
+      operationId: getOrder
+      summary: Get Order
+      description: Retrieve details of a specific order by its ID.
+      tags:
+      - Orders
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Order ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    $ref: '#/components/schemas/Order'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order not found
+  /orders/approve:
+    post:
+      operationId: approveOrder
+      summary: Approve Order
+      description: Approve a pending order that requires manual approval.
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Order ID to approve
+              required:
+              - id
+      responses:
+        '200':
+          description: Order approved
+        '401':
+          description: Unauthorized
+        '404':
+          description: Order not found
+components:
+  schemas:
+    Reward:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique reward identifier
+        order_id:
+          type: string
+          description: Parent order ID
+        status:
+          type: string
+          enum:
+          - PENDING
+          - PROCESSING
+          - DELIVERED
+          - FAILED
+          - CANCELED
+          description: Reward delivery status
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+              description: Reward amount
+            currency_code:
+              type: string
+              description: Currency code (e.g., USD)
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+              - EMAIL
+              - LINK
+              - PHONE
+            status:
+              type: string
+            delivered_at:
+              type: string
+              format: date-time
+        campaign_id:
+          type: string
+          description: Campaign used for this reward
+        created_at:
+          type: string
+          format: date-time
+    CreateOrderRequest:
+      type: object
+      properties:
+        external_id:
+          type: string
+          description: Reference for idempotency and retrieval
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+              description: Funding source ID or 'balance'
+          required:
+          - funding_source_id
+        reward:
+          $ref: '#/components/schemas/RewardInput'
+      required:
+      - payment
+      - reward
+    RewardInput:
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+            currency_code:
+              type: string
+          required:
+          - denomination
+          - currency_code
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+              - EMAIL
+              - LINK
+              - PHONE
+              default: EMAIL
+        campaign_id:
+          type: string
+          description: Campaign ID (defines product catalog)
+        products:
+          type: array
+          items:
+            type: string
+          description: Product IDs (alternative to campaign_id)
+        language:
+          type: string
+          description: ISO-639-1 language code for recipient communication
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique order identifier
+        external_id:
+          type: string
+          description: Customer-provided external reference for idempotency
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING_APPROVAL
+          - APPROVED
+          - PROCESSING
+          - DONE
+          - FAILED
+          description: Order status
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+            subtotal:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                value:
+                  type: number
+            total:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                value:
+                  type: number
+        rewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
+        created_at:
+          type: string
+          format: date-time
+    Recipient:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Recipient full name
+        email:
+          type: string
+          format: email
+          description: Recipient email address
+        phone:
+          type: string
+          description: Recipient phone number (for SMS delivery)
+      required:
+      - name
+      - email
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Tremendous API key. Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks

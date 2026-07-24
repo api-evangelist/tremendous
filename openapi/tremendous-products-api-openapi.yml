@@ -1,0 +1,124 @@
+openapi: 3.1.0
+info:
+  title: Tremendous Campaigns Products API
+  description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+- url: https://testflight.tremendous.com/api/v2
+  description: Sandbox (testing)
+- url: https://www.tremendous.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Products
+  description: Browse available payout products and gift cards
+paths:
+  /products:
+    get:
+      operationId: listProducts
+      summary: List Products
+      description: Returns a list of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity donations, etc.).
+      tags:
+      - Products
+      parameters:
+      - name: country
+        in: query
+        description: Filter by country (ISO 3166-1 alpha-2)
+        schema:
+          type: string
+      - name: currency_codes
+        in: query
+        description: Filter by currency code (comma-separated)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique product identifier
+        name:
+          type: string
+          description: Product name (e.g., Amazon.com)
+        category:
+          type: string
+          enum:
+          - GIFT_CARD
+          - PREPAID_CARD
+          - BANK_TRANSFER
+          - PAYPAL
+          - VENMO
+          - CHARITY
+          - CRYPTOCURRENCY
+          description: Product category
+        currency_codes:
+          type: array
+          items:
+            type: string
+          description: Supported currency codes
+        countries:
+          type: array
+          items:
+            type: object
+            properties:
+              abbr:
+                type: string
+              name:
+                type: string
+          description: Countries where product is available
+        skus:
+          type: array
+          items:
+            type: object
+            properties:
+              min:
+                type: number
+              max:
+                type: number
+              denomination:
+                type: number
+          description: Available denominations/value ranges
+        image_url:
+          type: string
+          format: uri
+          description: Product logo/image URL
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Tremendous API key. Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks

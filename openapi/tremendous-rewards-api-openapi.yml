@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: Tremendous Campaigns Rewards API
+  description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+- url: https://testflight.tremendous.com/api/v2
+  description: Sandbox (testing)
+- url: https://www.tremendous.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Rewards
+  description: Manage individual rewards within orders
+paths:
+  /rewards/{id}:
+    get:
+      operationId: getReward
+      summary: Get Reward
+      description: Retrieve details of a specific reward by its ID.
+      tags:
+      - Rewards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Reward ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Reward details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reward:
+                    $ref: '#/components/schemas/Reward'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Reward not found
+  /rewards/{id}/resend:
+    post:
+      operationId: resendReward
+      summary: Resend Reward
+      description: Resend the delivery for a reward (e.g., resend the email).
+      tags:
+      - Rewards
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Reward ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Reward resent
+        '401':
+          description: Unauthorized
+        '404':
+          description: Reward not found
+components:
+  schemas:
+    Reward:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique reward identifier
+        order_id:
+          type: string
+          description: Parent order ID
+        status:
+          type: string
+          enum:
+          - PENDING
+          - PROCESSING
+          - DELIVERED
+          - FAILED
+          - CANCELED
+          description: Reward delivery status
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+              description: Reward amount
+            currency_code:
+              type: string
+              description: Currency code (e.g., USD)
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+              - EMAIL
+              - LINK
+              - PHONE
+            status:
+              type: string
+            delivered_at:
+              type: string
+              format: date-time
+        campaign_id:
+          type: string
+          description: Campaign used for this reward
+        created_at:
+          type: string
+          format: date-time
+    Recipient:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Recipient full name
+        email:
+          type: string
+          format: email
+          description: Recipient email address
+        phone:
+          type: string
+          description: Recipient phone number (for SMS delivery)
+      required:
+      - name
+      - email
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Tremendous API key. Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks

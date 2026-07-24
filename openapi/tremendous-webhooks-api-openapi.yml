@@ -1,0 +1,195 @@
+openapi: 3.1.0
+info:
+  title: Tremendous Campaigns Webhooks API
+  description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
+  version: '2.0'
+  contact:
+    name: Tremendous Support
+    url: https://developers.tremendous.com
+    email: api@tremendous.com
+  license:
+    name: Proprietary
+  termsOfService: https://www.tremendous.com/terms
+servers:
+- url: https://testflight.tremendous.com/api/v2
+  description: Sandbox (testing)
+- url: https://www.tremendous.com/api/v2
+  description: Production
+security:
+- BearerAuth: []
+tags:
+- name: Webhooks
+  description: Configure webhook notifications
+paths:
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      summary: List Webhooks
+      description: Returns webhook configuration for the organization.
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Webhook configuration
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhooks:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createWebhook
+      summary: Create Webhook
+      description: Configure a webhook endpoint for the organization.
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: Webhook endpoint URL
+                private_key:
+                  type: string
+                  description: Private key for HMAC signature verification
+              required:
+              - url
+      responses:
+        '201':
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhook:
+                    $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+  /webhooks/{id}:
+    get:
+      operationId: getWebhook
+      summary: Get Webhook
+      description: Retrieve details of a specific webhook configuration.
+      tags:
+      - Webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Webhook details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  webhook:
+                    $ref: '#/components/schemas/Webhook'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Webhook not found
+    delete:
+      operationId: deleteWebhook
+      summary: Delete Webhook
+      description: Remove a webhook configuration from the organization.
+      tags:
+      - Webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Webhook deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: Webhook not found
+  /webhooks/{id}/simulate:
+    post:
+      operationId: simulateWebhook
+      summary: Simulate Webhook
+      description: Send a test event to the webhook endpoint to verify connectivity.
+      tags:
+      - Webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Webhook ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event:
+                  type: string
+                  description: Event type to simulate (e.g., ORDERS.COMPLETED)
+              required:
+              - event
+      responses:
+        '200':
+          description: Simulation sent
+        '401':
+          description: Unauthorized
+        '404':
+          description: Webhook not found
+components:
+  schemas:
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique webhook identifier
+        url:
+          type: string
+          format: uri
+          description: Webhook endpoint URL
+        events:
+          type: array
+          items:
+            type: string
+          description: Event types this webhook receives
+        created_at:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using a Tremendous API key. Generate API keys in your Tremendous dashboard Settings > API.
+    OAuth2:
+      type: oauth2
+      description: OAuth 2.0 for third-party integrations
+      flows:
+        authorizationCode:
+          authorizationUrl: https://www.tremendous.com/oauth/authorize
+          tokenUrl: https://www.tremendous.com/oauth/token
+          scopes:
+            read: Read access to orders, rewards, products, and funding sources
+            write: Create orders and rewards
+            manage: Manage organization settings, members, and webhooks
