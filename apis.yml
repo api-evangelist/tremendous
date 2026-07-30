@@ -6,9 +6,22 @@ description: >-
   cards, PayPal, Venmo, and charity donations. Supports multi-product rewards (recipient choice) and single-product
   rewards.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tremendous.png
 tags:
   - Employee Incentives
   - Global Payouts
@@ -21,34 +34,186 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/tremendous/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: tremendous:tremendous
-    name: Tremendous API
-    description: >-
-      The Tremendous REST API enables businesses to programmatically send rewards, incentives, and payouts worldwide.
-      The API covers orders, rewards, products, campaigns, funding sources, organizations, members, invoices, and
-      webhooks. Authentication uses Bearer API keys or OAuth 2.0. Rate limit: 30 requests per 30 seconds.
-    humanURL: https://developers.tremendous.com/
-    baseURL: https://testflight.tremendous.com/api/v2
-    tags:
-      - Employee Incentives
-      - Global Payouts
-      - Incentives
-      - Market Research
-      - Payouts
-      - Rewards
-    properties:
-      - type: Documentation
-        url: https://developers.tremendous.com/docs/introduction
-      - type: Reference
-        url: https://developers.tremendous.com/reference/api-endpoints-overview
-      - type: GitHubOrganization
-        url: https://github.com/tremendous-rewards
-      - type: GitHubRepository
-        url: https://github.com/tremendous-rewards/api-docs
-      - type: GitHubRepository
-        url: https://github.com/tremendous-rewards/tremendous-node
-      - type: OpenAPI
-        url: openapi/tremendous-api-openapi.yml
+- aid: tremendous:tremendous-campaigns-api
+  name: Tremendous Campaigns API
+  description: Manage reward presentation and product catalogs
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-funding-sources-api
+  name: Tremendous Funding Sources API
+  description: Manage funding sources for sending rewards
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Funding Sources
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-funding-sources-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-invoices-api
+  name: Tremendous Invoices API
+  description: View and manage invoices
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-members-api
+  name: Tremendous Members API
+  description: Manage organization members
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Members
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-members-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-orders-api
+  name: Tremendous Orders API
+  description: Create and manage reward orders
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-organizations-api
+  name: Tremendous Organizations API
+  description: Manage organizations (team accounts)
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-products-api
+  name: Tremendous Products API
+  description: Browse available payout products and gift cards
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-products-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-rewards-api
+  name: Tremendous Rewards API
+  description: Manage individual rewards within orders
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
+- aid: tremendous:tremendous-webhooks-api
+  name: Tremendous Webhooks API
+  description: Configure webhook notifications
+  humanURL: https://developers.tremendous.com/
+  baseURL: https://testflight.tremendous.com/api/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/tremendous-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tremendous.com/docs/introduction
+  - type: Reference
+    url: https://developers.tremendous.com/reference/api-endpoints-overview
+  - type: GitHubOrganization
+    url: https://github.com/tremendous-rewards
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/api-docs
+  - type: GitHubRepository
+    url: https://github.com/tremendous-rewards/tremendous-node
 common:
   - type: AgenticAccess
     url: agentic-access/tremendous-agentic-access.yml
