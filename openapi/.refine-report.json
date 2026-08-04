@@ -1,0 +1,30 @@
+{
+  "provider": "tremendous",
+  "sources": [
+    "tremendous-campaigns-api-openapi.yml",
+    "tremendous-funding-sources-api-openapi.yml",
+    "tremendous-invoices-api-openapi.yml",
+    "tremendous-members-api-openapi.yml",
+    "tremendous-orders-api-openapi.yml",
+    "tremendous-organizations-api-openapi.yml",
+    "tremendous-products-api-openapi.yml",
+    "tremendous-rewards-api-openapi.yml",
+    "tremendous-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "tremendous-campaigns-api-openapi.yml",
+    "tremendous-funding-sources-api-openapi.yml",
+    "tremendous-invoices-api-openapi.yml",
+    "tremendous-members-api-openapi.yml",
+    "tremendous-orders-api-openapi.yml",
+    "tremendous-organizations-api-openapi.yml",
+    "tremendous-products-api-openapi.yml",
+    "tremendous-rewards-api-openapi.yml",
+    "tremendous-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
