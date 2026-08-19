@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tremendous Campaigns Products API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/products",
+            "params": [
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country (ISO 3166-1 alpha-2)"
+              },
+              {
+                "name": "currency_codes",
+                "value": "",
+                "type": "query",
+                "description": "Filter by currency code (comma-separated)"
+              }
+            ]
+          },
+          "docs": "Returns a list of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity donations, etc.)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

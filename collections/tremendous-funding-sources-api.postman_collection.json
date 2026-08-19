@@ -1,0 +1,158 @@
+{
+  "item": [
+    {
+      "id": "37e37a96-0583-40e7-98a0-0d8dbb8ecef8",
+      "name": "Funding Sources",
+      "description": {
+        "content": "Manage funding sources for sending rewards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1faf66e5-1078-4062-8c77-3b7e4d6fe91d",
+          "name": "List Funding Sources",
+          "request": {
+            "name": "List Funding Sources",
+            "description": {
+              "content": "Returns a list of available funding sources for the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "funding_sources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b05358f-75b5-48d4-ae89-fdf3717773a1",
+              "name": "List of funding sources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "funding_sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"funding_sources\": [\n    {\n      \"id\": \"string\",\n      \"method\": \"ACH\",\n      \"meta\": {},\n      \"balance\": {\n        \"currency_code\": \"string\",\n        \"amount\": 1803.0478857124056\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"method\": \"ACH\",\n      \"meta\": {},\n      \"balance\": {\n        \"currency_code\": \"string\",\n        \"amount\": 8984.289545017678\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90a068f8-b975-458d-81f2-3e95f412ac3d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "funding_sources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://testflight.tremendous.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2fd55169-89d1-4ce5-a341-913c939c6671",
+    "name": "Tremendous Campaigns Funding Sources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+      "type": "text/plain"
+    }
+  }
+}

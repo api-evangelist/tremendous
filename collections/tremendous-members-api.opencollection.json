@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tremendous Campaigns Members API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Members",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/members"
+          },
+          "docs": "Returns a list of members in the organization."
+        },
+        {
+          "info": {
+            "name": "Create Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/members",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invite a new member to the organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

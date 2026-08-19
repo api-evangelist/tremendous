@@ -1,0 +1,189 @@
+{
+  "item": [
+    {
+      "id": "aa90572c-25d2-429d-a3ee-48c3d5822f41",
+      "name": "Products",
+      "description": {
+        "content": "Browse available payout products and gift cards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b78b07f0-4bd4-4395-93e9-712868c39467",
+          "name": "List Products",
+          "request": {
+            "name": "List Products",
+            "description": {
+              "content": "Returns a list of available payout products (gift cards, prepaid cards, PayPal, bank transfers, charity donations, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter by country (ISO 3166-1 alpha-2)"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency_codes",
+                  "value": "<string>",
+                  "description": "Filter by currency code (comma-separated)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b6f8117-78c3-4654-b780-fe6ab92d5c46",
+              "name": "List of products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency_codes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"products\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"BANK_TRANSFER\",\n      \"currency_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countries\": [\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"skus\": [\n        {\n          \"min\": 5758.834589699781,\n          \"max\": 71.38799231345527,\n          \"denomination\": 5904.859438031017\n        },\n        {\n          \"min\": 9651.925508502973,\n          \"max\": 9718.825654363507,\n          \"denomination\": 5653.854715937683\n        }\n      ],\n      \"image_url\": \"https://IcCIqXbOKdtlrZiSGGbBMaHOnXsoKnhY.tzblc73PAB+lOUAyfqASICOq+tSE4X3SL,U\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"category\": \"PREPAID_CARD\",\n      \"currency_codes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"countries\": [\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        },\n        {\n          \"abbr\": \"string\",\n          \"name\": \"string\"\n        }\n      ],\n      \"skus\": [\n        {\n          \"min\": 4390.430640129165,\n          \"max\": 641.1029913978061,\n          \"denomination\": 29.974326686527107\n        },\n        {\n          \"min\": 1834.598070138268,\n          \"max\": 867.4166546948848,\n          \"denomination\": 5378.658781743618\n        }\n      ],\n      \"image_url\": \"http://cAirOk.covmDJQpuqV\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a815a74b-9d59-499a-97b6-fb066af923ab",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency_codes",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://testflight.tremendous.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5ec81cdf-3106-46bf-8b6e-82aa194793b5",
+    "name": "Tremendous Campaigns Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+      "type": "text/plain"
+    }
+  }
+}

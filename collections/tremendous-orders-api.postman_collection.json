@@ -1,0 +1,1035 @@
+{
+  "item": [
+    {
+      "id": "2cb5b104-eae2-4a35-aa09-ec39a6387132",
+      "name": "Orders",
+      "description": {
+        "content": "Create and manage reward orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7eab2f07-45de-4a11-b145-9306be6db6f9",
+          "name": "List Orders",
+          "request": {
+            "name": "List Orders",
+            "description": {
+              "content": "Returns a paginated list of all orders in the organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Maximum number of results to return (max 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_gte",
+                  "value": "<dateTime>",
+                  "description": "Filter orders created at or after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_lte",
+                  "value": "<dateTime>",
+                  "description": "Filter orders created at or before this date"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36cfb28a-545d-4b60-b723-436015be96a9",
+              "name": "List of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_lte",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"status\": \"DONE\",\n      \"payment\": {\n        \"funding_source_id\": \"string\",\n        \"subtotal\": {\n          \"currency_code\": \"string\",\n          \"value\": 1149.530909639176\n        },\n        \"total\": {\n          \"currency_code\": \"string\",\n          \"value\": 3354.5875055329598\n        }\n      },\n      \"rewards\": [\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"CANCELED\",\n          \"value\": {\n            \"denomination\": 6564.42413445672,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"Q2eX2Imz@rSvOgeWzJUnftbrB.qg\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"PHONE\",\n            \"status\": \"string\",\n            \"delivered_at\": \"1975-01-12T03:32:52.075Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"2022-05-28T16:01:45.655Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"DELIVERED\",\n          \"value\": {\n            \"denomination\": 9438.67667983466,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"0UaG17u@xpgfYqwWBAIIctpecVPrSM.eva\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"LINK\",\n            \"status\": \"string\",\n            \"delivered_at\": \"1965-04-15T23:25:54.049Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"1976-03-29T18:50:35.216Z\"\n        }\n      ],\n      \"created_at\": \"1958-11-02T02:24:44.115Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"external_id\": \"string\",\n      \"status\": \"DRAFT\",\n      \"payment\": {\n        \"funding_source_id\": \"string\",\n        \"subtotal\": {\n          \"currency_code\": \"string\",\n          \"value\": 547.2506428720592\n        },\n        \"total\": {\n          \"currency_code\": \"string\",\n          \"value\": 7729.422991920004\n        }\n      },\n      \"rewards\": [\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"FAILED\",\n          \"value\": {\n            \"denomination\": 1015.724515276093,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"g36aM@EDmOFTkAzxGNBO.svyj\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"LINK\",\n            \"status\": \"string\",\n            \"delivered_at\": \"1985-09-11T08:49:33.306Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"1981-08-11T19:16:18.851Z\"\n        },\n        {\n          \"id\": \"string\",\n          \"order_id\": \"string\",\n          \"status\": \"PENDING\",\n          \"value\": {\n            \"denomination\": 2075.439795965581,\n            \"currency_code\": \"string\"\n          },\n          \"recipient\": {\n            \"name\": \"string\",\n            \"email\": \"x8aACk@zkU.xhn\",\n            \"phone\": \"string\"\n          },\n          \"delivery\": {\n            \"method\": \"PHONE\",\n            \"status\": \"string\",\n            \"delivered_at\": \"1986-11-20T11:39:06.455Z\"\n          },\n          \"campaign_id\": \"string\",\n          \"created_at\": \"2018-10-01T09:47:59.825Z\"\n        }\n      ],\n      \"created_at\": \"1960-09-22T16:18:25.612Z\"\n    }\n  ],\n  \"total_count\": 4564\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cbe7839-50e3-4aaf-a3f4-efc544949157",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_lte",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2399d5db-231e-4eb8-9469-53fd14228394",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "created_at_gte",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "created_at_lte",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fa40a08-de41-4df8-bc1b-2fe727ca1735",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Create a new order to send one or more rewards. An order contains rewards, a funding source, and optional external ID for idempotency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": \"<number>\",\n      \"currency_code\": \"<string>\"\n    },\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"<string>\",\n    \"products\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"language\": \"<string>\"\n  },\n  \"external_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "afdf9a5b-01b8-4871-a814-577adeb6f5fd",
+              "name": "Order created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"id\": \"string\",\n    \"external_id\": \"string\",\n    \"status\": \"DONE\",\n    \"payment\": {\n      \"funding_source_id\": \"string\",\n      \"subtotal\": {\n        \"currency_code\": \"string\",\n        \"value\": 682.2905190494488\n      },\n      \"total\": {\n        \"currency_code\": \"string\",\n        \"value\": 9010.766929411253\n      }\n    },\n    \"rewards\": [\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"FAILED\",\n        \"value\": {\n          \"denomination\": 1315.5712391720908,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"yPE@LD.rk\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"EMAIL\",\n          \"status\": \"string\",\n          \"delivered_at\": \"1957-11-10T09:33:26.407Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"1979-12-09T19:43:17.378Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"DELIVERED\",\n        \"value\": {\n          \"denomination\": 5441.726544790739,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"1ktwqenxDzz-G@uXTxL.hey\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"PHONE\",\n          \"status\": \"string\",\n          \"delivered_at\": \"1990-08-18T13:33:29.123Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"2014-01-26T12:17:58.829Z\"\n      }\n    ],\n    \"created_at\": \"2002-03-31T21:04:36.052Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "72e683df-adc3-44ca-90ff-145ebe79821e",
+              "name": "Bad request - validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92c97a1d-e2ee-4610-a3b7-e5c23bafa89c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "788e780d-02f0-4481-a1ec-73d708bbb170",
+              "name": "Insufficient funds",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "690275d6-c865-4440-8281-b38ef99ae53f",
+              "name": "Conflict - duplicate external_id",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d392b98b-ff04-4307-8282-b9e19ec5bf76",
+              "name": "Unprocessable entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0994871-1b41-46f1-8a8e-3f1f5ab63cf0",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment\": {\n    \"funding_source_id\": \"<string>\"\n  },\n  \"reward\": {\n    \"value\": {\n      \"denomination\": 5748.405921378614,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"Rnodq1WD7H@VtzqBoIuXJXXk.lg\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\"\n    },\n    \"campaign_id\": \"string\",\n    \"products\": [\n      \"string\",\n      \"string\"\n    ],\n    \"language\": \"string\"\n  },\n  \"external_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "526a5f6f-51d9-47d6-a3ba-aa450d0a3e4b",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Retrieve details of a specific order by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f25eed5f-86e9-433a-8d27-262c3d8c84f4",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order\": {\n    \"id\": \"string\",\n    \"external_id\": \"string\",\n    \"status\": \"DONE\",\n    \"payment\": {\n      \"funding_source_id\": \"string\",\n      \"subtotal\": {\n        \"currency_code\": \"string\",\n        \"value\": 682.2905190494488\n      },\n      \"total\": {\n        \"currency_code\": \"string\",\n        \"value\": 9010.766929411253\n      }\n    },\n    \"rewards\": [\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"FAILED\",\n        \"value\": {\n          \"denomination\": 1315.5712391720908,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"yPE@LD.rk\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"EMAIL\",\n          \"status\": \"string\",\n          \"delivered_at\": \"1957-11-10T09:33:26.407Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"1979-12-09T19:43:17.378Z\"\n      },\n      {\n        \"id\": \"string\",\n        \"order_id\": \"string\",\n        \"status\": \"DELIVERED\",\n        \"value\": {\n          \"denomination\": 5441.726544790739,\n          \"currency_code\": \"string\"\n        },\n        \"recipient\": {\n          \"name\": \"string\",\n          \"email\": \"1ktwqenxDzz-G@uXTxL.hey\",\n          \"phone\": \"string\"\n        },\n        \"delivery\": {\n          \"method\": \"PHONE\",\n          \"status\": \"string\",\n          \"delivered_at\": \"1990-08-18T13:33:29.123Z\"\n        },\n        \"campaign_id\": \"string\",\n        \"created_at\": \"2014-01-26T12:17:58.829Z\"\n      }\n    ],\n    \"created_at\": \"2002-03-31T21:04:36.052Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52a8f07e-c4f0-4b8b-915d-2e2dc3cd64bf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cfa2be94-fc5a-48d8-bbed-268e0c6a57ef",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "984e724c-56bf-4b4f-8db1-9578d2496669",
+          "name": "Approve Order",
+          "request": {
+            "name": "Approve Order",
+            "description": {
+              "content": "Approve a pending order that requires manual approval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50286031-de0b-453b-8b3d-d2e93064e375",
+              "name": "Order approved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5827ce44-8d46-4ab6-a9d2-ea6ddc8070fb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ff612135-3382-417a-8bad-2b1ccdd30d3c",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://testflight.tremendous.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a60dcbd2-dac1-47aa-a2c7-f0e101316ad0",
+    "name": "Tremendous Campaigns Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+      "type": "text/plain"
+    }
+  }
+}

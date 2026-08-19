@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tremendous Campaigns Rewards API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://testflight.tremendous.com/api/v2/rewards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Reward ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific reward by its ID."
+        },
+        {
+          "info": {
+            "name": "Resend Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://testflight.tremendous.com/api/v2/rewards/:id/resend",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Reward ID"
+              }
+            ]
+          },
+          "docs": "Resend the delivery for a reward (e.g., resend the email)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
