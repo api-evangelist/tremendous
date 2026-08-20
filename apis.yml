@@ -120,6 +120,8 @@ apis:
   humanURL: https://developers.tremendous.com/
   baseURL: https://testflight.tremendous.com/api/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -140,6 +142,8 @@ apis:
   humanURL: https://developers.tremendous.com/
   baseURL: https://testflight.tremendous.com/api/v2
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -160,6 +164,8 @@ apis:
   humanURL: https://developers.tremendous.com/
   baseURL: https://testflight.tremendous.com/api/v2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -200,6 +206,8 @@ apis:
   humanURL: https://developers.tremendous.com/
   baseURL: https://testflight.tremendous.com/api/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
