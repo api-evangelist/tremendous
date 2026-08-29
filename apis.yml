@@ -6,6 +6,19 @@ description: >-
   cards, PayPal, Venmo, and charity donations. Supports multi-product rewards (recipient choice) and single-product
   rewards.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -223,6 +236,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/tremendous-rewards/tremendous-node
 common:
+  - type: IssueTracker
+    url: https://github.com/tremendous-rewards/api-docs/issues
   - type: AgenticAccess
     url: agentic-access/tremendous-agentic-access.yml
   - type: VulnerabilityDisclosure
