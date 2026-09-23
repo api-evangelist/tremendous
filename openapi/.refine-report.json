@@ -1,15 +1,7 @@
 {
   "provider": "tremendous",
   "sources": [
-    "tremendous-campaigns-api-openapi.yml",
-    "tremendous-funding-sources-api-openapi.yml",
-    "tremendous-invoices-api-openapi.yml",
-    "tremendous-members-api-openapi.yml",
-    "tremendous-orders-api-openapi.yml",
-    "tremendous-organizations-api-openapi.yml",
-    "tremendous-products-api-openapi.yml",
-    "tremendous-rewards-api-openapi.yml",
-    "tremendous-webhooks-api-openapi.yml"
+    "_original/tremendous-api-openapi.yml"
   ],
   "outputs": [
     "tremendous-campaigns-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tremendous-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tremendous-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-funding-sources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-members-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-products-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-rewards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tremendous-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

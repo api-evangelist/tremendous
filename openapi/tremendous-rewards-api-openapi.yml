@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tremendous Campaigns Rewards API
+  title: Tremendous Rewards API
   description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
   version: '2.0'
   contact:
@@ -72,6 +72,22 @@ paths:
           description: Reward not found
 components:
   schemas:
+    Recipient:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Recipient full name
+        email:
+          type: string
+          format: email
+          description: Recipient email address
+        phone:
+          type: string
+          description: Recipient phone number (for SMS delivery)
+      required:
+      - name
+      - email
     Reward:
       type: object
       properties:
@@ -121,22 +137,6 @@ components:
         created_at:
           type: string
           format: date-time
-    Recipient:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Recipient full name
-        email:
-          type: string
-          format: email
-          description: Recipient email address
-        phone:
-          type: string
-          description: Recipient phone number (for SMS delivery)
-      required:
-      - name
-      - email
   securitySchemes:
     BearerAuth:
       type: http

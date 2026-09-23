@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tremendous Campaigns Orders API
+  title: Tremendous Orders API
   description: The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.
   version: '2.0'
   contact:
@@ -162,6 +162,122 @@ paths:
           description: Order not found
 components:
   schemas:
+    RewardInput:
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+            currency_code:
+              type: string
+          required:
+          - denomination
+          - currency_code
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+              - EMAIL
+              - LINK
+              - PHONE
+              default: EMAIL
+        campaign_id:
+          type: string
+          description: Campaign ID (defines product catalog)
+        products:
+          type: array
+          items:
+            type: string
+          description: Product IDs (alternative to campaign_id)
+        language:
+          type: string
+          description: ISO-639-1 language code for recipient communication
+    Recipient:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Recipient full name
+        email:
+          type: string
+          format: email
+          description: Recipient email address
+        phone:
+          type: string
+          description: Recipient phone number (for SMS delivery)
+      required:
+      - name
+      - email
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique order identifier
+        external_id:
+          type: string
+          description: Customer-provided external reference for idempotency
+        status:
+          type: string
+          enum:
+          - DRAFT
+          - PENDING_APPROVAL
+          - APPROVED
+          - PROCESSING
+          - DONE
+          - FAILED
+          description: Order status
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+            subtotal:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                value:
+                  type: number
+            total:
+              type: object
+              properties:
+                currency_code:
+                  type: string
+                value:
+                  type: number
+        rewards:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
+        created_at:
+          type: string
+          format: date-time
+    CreateOrderRequest:
+      type: object
+      properties:
+        external_id:
+          type: string
+          description: Reference for idempotency and retrieval
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+              description: Funding source ID or 'balance'
+          required:
+          - funding_source_id
+        reward:
+          $ref: '#/components/schemas/RewardInput'
+      required:
+      - payment
+      - reward
     Reward:
       type: object
       properties:
@@ -211,122 +327,6 @@ components:
         created_at:
           type: string
           format: date-time
-    CreateOrderRequest:
-      type: object
-      properties:
-        external_id:
-          type: string
-          description: Reference for idempotency and retrieval
-        payment:
-          type: object
-          properties:
-            funding_source_id:
-              type: string
-              description: Funding source ID or 'balance'
-          required:
-          - funding_source_id
-        reward:
-          $ref: '#/components/schemas/RewardInput'
-      required:
-      - payment
-      - reward
-    RewardInput:
-      type: object
-      properties:
-        value:
-          type: object
-          properties:
-            denomination:
-              type: number
-            currency_code:
-              type: string
-          required:
-          - denomination
-          - currency_code
-        recipient:
-          $ref: '#/components/schemas/Recipient'
-        delivery:
-          type: object
-          properties:
-            method:
-              type: string
-              enum:
-              - EMAIL
-              - LINK
-              - PHONE
-              default: EMAIL
-        campaign_id:
-          type: string
-          description: Campaign ID (defines product catalog)
-        products:
-          type: array
-          items:
-            type: string
-          description: Product IDs (alternative to campaign_id)
-        language:
-          type: string
-          description: ISO-639-1 language code for recipient communication
-    Order:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique order identifier
-        external_id:
-          type: string
-          description: Customer-provided external reference for idempotency
-        status:
-          type: string
-          enum:
-          - DRAFT
-          - PENDING_APPROVAL
-          - APPROVED
-          - PROCESSING
-          - DONE
-          - FAILED
-          description: Order status
-        payment:
-          type: object
-          properties:
-            funding_source_id:
-              type: string
-            subtotal:
-              type: object
-              properties:
-                currency_code:
-                  type: string
-                value:
-                  type: number
-            total:
-              type: object
-              properties:
-                currency_code:
-                  type: string
-                value:
-                  type: number
-        rewards:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reward'
-        created_at:
-          type: string
-          format: date-time
-    Recipient:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Recipient full name
-        email:
-          type: string
-          format: email
-          description: Recipient email address
-        phone:
-          type: string
-          description: Recipient phone number (for SMS delivery)
-      required:
-      - name
-      - email
   securitySchemes:
     BearerAuth:
       type: http
