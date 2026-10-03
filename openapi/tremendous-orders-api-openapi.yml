@@ -181,55 +181,6 @@ components:
       required:
       - payment
       - reward
-    Reward:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique reward identifier
-        order_id:
-          type: string
-          description: Parent order ID
-        status:
-          type: string
-          enum:
-          - PENDING
-          - PROCESSING
-          - DELIVERED
-          - FAILED
-          - CANCELED
-          description: Reward delivery status
-        value:
-          type: object
-          properties:
-            denomination:
-              type: number
-              description: Reward amount
-            currency_code:
-              type: string
-              description: Currency code (e.g., USD)
-        recipient:
-          $ref: '#/components/schemas/Recipient'
-        delivery:
-          type: object
-          properties:
-            method:
-              type: string
-              enum:
-              - EMAIL
-              - LINK
-              - PHONE
-            status:
-              type: string
-            delivered_at:
-              type: string
-              format: date-time
-        campaign_id:
-          type: string
-          description: Campaign used for this reward
-        created_at:
-          type: string
-          format: date-time
     Recipient:
       type: object
       properties:
@@ -282,6 +233,55 @@ components:
         language:
           type: string
           description: ISO-639-1 language code for recipient communication
+    Reward:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique reward identifier
+        order_id:
+          type: string
+          description: Parent order ID
+        status:
+          type: string
+          enum:
+          - PENDING
+          - PROCESSING
+          - DELIVERED
+          - FAILED
+          - CANCELED
+          description: Reward delivery status
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+              description: Reward amount
+            currency_code:
+              type: string
+              description: Currency code (e.g., USD)
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+              - EMAIL
+              - LINK
+              - PHONE
+            status:
+              type: string
+            delivered_at:
+              type: string
+              format: date-time
+        campaign_id:
+          type: string
+          description: Campaign used for this reward
+        created_at:
+          type: string
+          format: date-time
     Order:
       type: object
       properties:
