@@ -241,6 +241,9 @@ apis:
   - type: GitHubRepository
     url: https://github.com/tremendous-rewards/tremendous-node
 common:
+  - type: CapabilityMap
+    url: capabilities/tremendous-capability-edges.yml
+    name: Tremendous Business Capability Map
   - type: IssueTracker
     url: https://github.com/tremendous-rewards/api-docs/issues
   - type: AgenticAccess
