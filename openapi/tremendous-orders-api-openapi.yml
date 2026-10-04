@@ -162,25 +162,6 @@ paths:
           description: Order not found
 components:
   schemas:
-    CreateOrderRequest:
-      type: object
-      properties:
-        external_id:
-          type: string
-          description: Reference for idempotency and retrieval
-        payment:
-          type: object
-          properties:
-            funding_source_id:
-              type: string
-              description: Funding source ID or 'balance'
-          required:
-          - funding_source_id
-        reward:
-          $ref: '#/components/schemas/RewardInput'
-      required:
-      - payment
-      - reward
     Recipient:
       type: object
       properties:
@@ -282,6 +263,25 @@ components:
         created_at:
           type: string
           format: date-time
+    CreateOrderRequest:
+      type: object
+      properties:
+        external_id:
+          type: string
+          description: Reference for idempotency and retrieval
+        payment:
+          type: object
+          properties:
+            funding_source_id:
+              type: string
+              description: Funding source ID or 'balance'
+          required:
+          - funding_source_id
+        reward:
+          $ref: '#/components/schemas/RewardInput'
+      required:
+      - payment
+      - reward
     Order:
       type: object
       properties:
