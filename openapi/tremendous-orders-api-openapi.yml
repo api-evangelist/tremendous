@@ -178,42 +178,6 @@ components:
       required:
       - name
       - email
-    RewardInput:
-      type: object
-      properties:
-        value:
-          type: object
-          properties:
-            denomination:
-              type: number
-            currency_code:
-              type: string
-          required:
-          - denomination
-          - currency_code
-        recipient:
-          $ref: '#/components/schemas/Recipient'
-        delivery:
-          type: object
-          properties:
-            method:
-              type: string
-              enum:
-              - EMAIL
-              - LINK
-              - PHONE
-              default: EMAIL
-        campaign_id:
-          type: string
-          description: Campaign ID (defines product catalog)
-        products:
-          type: array
-          items:
-            type: string
-          description: Product IDs (alternative to campaign_id)
-        language:
-          type: string
-          description: ISO-639-1 language code for recipient communication
     Reward:
       type: object
       properties:
@@ -263,6 +227,42 @@ components:
         created_at:
           type: string
           format: date-time
+    RewardInput:
+      type: object
+      properties:
+        value:
+          type: object
+          properties:
+            denomination:
+              type: number
+            currency_code:
+              type: string
+          required:
+          - denomination
+          - currency_code
+        recipient:
+          $ref: '#/components/schemas/Recipient'
+        delivery:
+          type: object
+          properties:
+            method:
+              type: string
+              enum:
+              - EMAIL
+              - LINK
+              - PHONE
+              default: EMAIL
+        campaign_id:
+          type: string
+          description: Campaign ID (defines product catalog)
+        products:
+          type: array
+          items:
+            type: string
+          description: Product IDs (alternative to campaign_id)
+        language:
+          type: string
+          description: ISO-639-1 language code for recipient communication
     CreateOrderRequest:
       type: object
       properties:
