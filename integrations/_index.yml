@@ -82,7 +82,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: tremendous-fivetran
   label: Fivetran
@@ -108,5 +108,5 @@
     - connectors/applications/tremendous
     vendor_link: https://www.tremendous.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
