@@ -110,3 +110,28 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: tremendous-qualtrics-own
+  label: Qualtrics (own)
+  partner: qualtrics
+  partner_name: Qualtrics (own)
+  category: Integration
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.qualtrics.com/marketplace/tremendous-integration/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: tremendous-surveymonkey-own
+  label: SurveyMonkey (own)
+  partner: surveymonkey
+  partner_name: SurveyMonkey (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.surveymonkey.com/apps/LxlzqR983QQ3csT4_2BkM_2FHA_3D_3D/details/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
