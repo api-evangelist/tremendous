@@ -241,6 +241,8 @@ apis:
   - type: GitHubRepository
     url: https://github.com/tremendous-rewards/tremendous-node
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/tremendous/overview
   - type: Plans
     url: plans/tremendous-plans-pricing.yml
   - type: RateLimits
