@@ -1,149 +1,307 @@
 {
+  "info": {
+    "_postman_id": "7fc97a84-65e6-43fc-acf8-fbf4007c86e3",
+    "name": "Tremendous Organizations API",
+    "description": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:36.000Z",
+    "updatedAt": "2026-10-21T20:05:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7fc97a84-65e6-43fc-acf8-fbf4007c86e3"
+  },
   "item": [
     {
-      "id": "8d4e38be-d26d-41e8-94ad-dd05459db94b",
-      "name": "Organizations",
-      "description": {
-        "content": "Manage organizations (team accounts)",
-        "type": "text/plain"
-      },
+      "name": "organizations",
       "item": [
         {
-          "id": "d639f65a-74d3-4cf8-90b3-ffaa264104ac",
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Organization",
+              "id": "2a32814f-f673-44e5-b985-0657998a2050",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d9ab9332-7f43-4a90-8289-27453f6a6a8c",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Organization ID"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific organization."
+              },
+              "response": [
+                {
+                  "id": "2f635170-53c6-4286-83c8-2a584ff24cc8",
+                  "name": "Organization details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"organization\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"website\": \"<uri>\",\n    \"with_api_credentials\": \"<boolean>\",\n    \"status\": \"ACTIVE\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:05:36.000Z",
+                  "updatedAt": "2026-10-21T20:05:36.000Z",
+                  "uid": "35240-2f635170-53c6-4286-83c8-2a584ff24cc8"
+                },
+                {
+                  "id": "722e5a92-fe3e-4a3a-9a7b-ccde424ea5a7",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:36.000Z",
+                  "updatedAt": "2026-10-21T20:05:36.000Z",
+                  "uid": "35240-722e5a92-fe3e-4a3a-9a7b-ccde424ea5a7"
+                },
+                {
+                  "id": "925a125c-956f-4fac-9354-9f120183d37e",
+                  "name": "Organization not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/organizations/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "organizations",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:36.000Z",
+                  "updatedAt": "2026-10-21T20:05:36.000Z",
+                  "uid": "35240-925a125c-956f-4fac-9354-9f120183d37e"
+                }
+              ],
+              "createdAt": "2026-10-21T20:05:36.000Z",
+              "updatedAt": "2026-10-21T20:05:36.000Z",
+              "uid": "35240-2a32814f-f673-44e5-b985-0657998a2050"
+            }
+          ],
+          "id": "9713b48b-1f05-479a-bf5a-9255a338222a",
+          "createdAt": "2026-10-21T20:05:36.000Z",
+          "updatedAt": "2026-10-21T20:05:36.000Z",
+          "uid": "35240-9713b48b-1f05-479a-bf5a-9255a338222a"
+        },
+        {
           "name": "List Organizations",
+          "id": "0b6bebf8-7fc8-41a0-8592-6c25f38c5da0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List Organizations",
-            "description": {
-              "content": "Returns a list of organizations accessible to the authenticated member.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "organizations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations"
+              ]
+            },
+            "description": "Returns a list of organizations accessible to the authenticated member."
           },
           "response": [
             {
-              "id": "8997b89a-f745-40c1-b4f6-b1a59e59f16b",
+              "id": "9970226e-c045-4e3d-8fc4-489cd6f5c76b",
               "name": "List of organizations",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"organizations\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"website\": \"http://yLJphgMgEteFEeFkyczCLCV.qlUnt8Qrnu6sM9dnXqY9arrlbZ0UoNK\",\n      \"with_api_credentials\": false,\n      \"status\": \"INACTIVE\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"website\": \"http://AXcMk.fqbsrqlgiB+lbNH.U+gz1yHSC2kftpSO6fkeK2WXTTr8MWSg3KiGcu1DrHVITT+NCZv.1FE\",\n      \"with_api_credentials\": true,\n      \"status\": \"INACTIVE\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"organizations\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"website\": \"<uri>\",\n      \"with_api_credentials\": \"<boolean>\",\n      \"status\": \"ACTIVE\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"website\": \"<uri>\",\n      \"with_api_credentials\": \"<boolean>\",\n      \"status\": \"INACTIVE\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:36.000Z",
+              "updatedAt": "2026-10-21T20:05:36.000Z",
+              "uid": "35240-9970226e-c045-4e3d-8fc4-489cd6f5c76b"
             },
             {
-              "id": "6deb9d86-e557-46e6-8cfd-48fd1d5927f5",
+              "id": "c43ec251-3f58-4098-b55f-c74bf32aeef4",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:36.000Z",
+              "updatedAt": "2026-10-21T20:05:36.000Z",
+              "uid": "35240-c43ec251-3f58-4098-b55f-c74bf32aeef4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:05:36.000Z",
+          "updatedAt": "2026-10-21T20:05:36.000Z",
+          "uid": "35240-0b6bebf8-7fc8-41a0-8592-6c25f38c5da0"
         },
         {
-          "id": "89b555e3-dcf0-4049-8f9a-422d00566eb0",
           "name": "Create Organization",
+          "id": "5f9f28d8-8703-409e-be96-c5dae15ca41a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create Organization",
-            "description": {
-              "content": "Create a new organization (sub-account) within the platform.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "organizations"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -154,325 +312,141 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations"
+              ]
+            },
+            "description": "Create a new organization (sub-account) within the platform."
           },
           "response": [
             {
-              "id": "ef79fd99-9abe-41de-8a87-23f83112729a",
+              "id": "c55fa239-28b7-4c68-b4e6-debeb0c9b778",
               "name": "Organization created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"organization\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"https://PfwgPTrsOGZmTeCi.rhvttOOJalMIQqbxTxHLnY-TrB4t,qO6YAEOWX.9rFhzh\",\n    \"with_api_credentials\": true,\n    \"status\": \"INACTIVE\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"organization\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"website\": \"<uri>\",\n    \"with_api_credentials\": \"<boolean>\",\n    \"status\": \"ACTIVE\"\n  }\n}",
+              "createdAt": "2026-10-21T20:05:36.000Z",
+              "updatedAt": "2026-10-21T20:05:36.000Z",
+              "uid": "35240-c55fa239-28b7-4c68-b4e6-debeb0c9b778"
             },
             {
-              "id": "1e71c137-2ee3-43ca-bd3b-4eac984e5945",
+              "id": "f05003b1-fbe4-4e52-86df-d40751715ec7",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"name\": \"<string>\",\n  \"website\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:36.000Z",
+              "updatedAt": "2026-10-21T20:05:36.000Z",
+              "uid": "35240-f05003b1-fbe4-4e52-86df-d40751715ec7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b591b9bf-c3a4-4fa2-8254-8b4c3318addc",
-          "name": "Get Organization",
-          "request": {
-            "name": "Get Organization",
-            "description": {
-              "content": "Retrieve details of a specific organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "organizations",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Organization ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "def8aed7-20f1-477b-9088-15ce36db6a2e",
-              "name": "Organization details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Organization ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"organization\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"website\": \"https://PfwgPTrsOGZmTeCi.rhvttOOJalMIQqbxTxHLnY-TrB4t,qO6YAEOWX.9rFhzh\",\n    \"with_api_credentials\": true,\n    \"status\": \"INACTIVE\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "435768aa-62b4-4d76-b9d1-327c0eee09a2",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Organization ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d1845f74-e94a-4b4b-849a-8626682f9307",
-              "name": "Organization not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "organizations",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Organization ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:05:36.000Z",
+          "updatedAt": "2026-10-21T20:05:36.000Z",
+          "uid": "35240-5f9f28d8-8703-409e-be96-c5dae15ca41a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://testflight.tremendous.com/api/v2",
-      "key": "baseUrl"
+      "id": "e5d93e6b-ba04-43fe-b1ae-34878cbab42f",
+      "createdAt": "2026-10-21T20:05:36.000Z",
+      "updatedAt": "2026-10-21T20:05:36.000Z",
+      "uid": "35240-e5d93e6b-ba04-43fe-b1ae-34878cbab42f"
     }
   ],
   "auth": {
@@ -480,17 +454,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5cc2cef4-1180-4927-a548-f22f0e296bad",
-    "name": "Tremendous Campaigns Organizations API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://testflight.tremendous.com/api/v2"
     }
-  }
+  ]
 }

@@ -1,361 +1,334 @@
 {
+  "info": {
+    "_postman_id": "471f8de2-a685-472b-9ee8-7058ce69c0a0",
+    "name": "Tremendous Invoices API",
+    "description": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:18.000Z",
+    "updatedAt": "2026-10-21T20:05:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-471f8de2-a685-472b-9ee8-7058ce69c0a0"
+  },
   "item": [
     {
-      "id": "296fe592-e134-4b6b-a3e7-558704e10318",
-      "name": "Invoices",
-      "description": {
-        "content": "View and manage invoices",
-        "type": "text/plain"
-      },
+      "name": "invoices",
       "item": [
         {
-          "id": "05272227-2dfc-49c3-b263-b061f8a105db",
-          "name": "List Invoices",
-          "request": {
-            "name": "List Invoices",
-            "description": {
-              "content": "Returns a list of invoices for the organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "invoices"
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get Invoice",
+              "id": "14e967b8-0d1c-402e-971f-94ed55e723f2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/invoices/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f604cea0-2b10-47cc-9733-de711416dcd1",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Invoice ID"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific invoice."
+              },
+              "response": [
+                {
+                  "id": "b611e570-8b78-4606-8c46-1db0e5727bd1",
+                  "name": "Invoice details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"invoice\": {\n    \"id\": \"<string>\",\n    \"po_number\": \"<string>\",\n    \"amount\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    \"remaining\": {\n      \"currency_code\": \"<string>\",\n      \"value\": \"<number>\"\n    },\n    \"status\": \"PENDING\",\n    \"created_at\": \"<dateTime>\",\n    \"due_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-b611e570-8b78-4606-8c46-1db0e5727bd1"
+                },
+                {
+                  "id": "f1ead9d3-d0b6-4315-bd7a-469c9ec76ea6",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-f1ead9d3-d0b6-4315-bd7a-469c9ec76ea6"
+                },
+                {
+                  "id": "41ab29b0-0de8-4dfb-9c8e-76dd6ba18da7",
+                  "name": "Invoice not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/invoices/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "invoices",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:18.000Z",
+                  "updatedAt": "2026-10-21T20:05:18.000Z",
+                  "uid": "35240-41ab29b0-0de8-4dfb-9c8e-76dd6ba18da7"
+                }
               ],
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-14e967b8-0d1c-402e-971f-94ed55e723f2"
+            }
+          ],
+          "id": "47470fd8-96e3-4ac2-9a8e-9946ebb0fd8d",
+          "createdAt": "2026-10-21T20:05:18.000Z",
+          "updatedAt": "2026-10-21T20:05:18.000Z",
+          "uid": "35240-47470fd8-96e3-4ac2-9a8e-9946ebb0fd8d"
+        },
+        {
+          "name": "List Invoices",
+          "id": "97962a78-23d1-4441-be72-f51d697a384c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/invoices?offset=0&limit=10",
               "host": [
                 "{{baseUrl}}"
               ],
+              "path": [
+                "invoices"
+              ],
               "query": [
                 {
-                  "disabled": false,
                   "key": "offset",
                   "value": "0"
                 },
                 {
-                  "disabled": false,
                   "key": "limit",
                   "value": "10"
                 }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "875500a5-01bd-4fb0-93c6-b86ab65ac015",
-              "name": "List of invoices",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "invoices"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"invoices\": [\n    {\n      \"id\": \"string\",\n      \"po_number\": \"string\",\n      \"amount\": {\n        \"currency_code\": \"string\",\n        \"value\": 6665.173238343305\n      },\n      \"remaining\": {\n        \"currency_code\": \"string\",\n        \"value\": 8966.538011700133\n      },\n      \"status\": \"PARTIAL\",\n      \"created_at\": \"1954-08-23T06:06:11.730Z\",\n      \"due_at\": \"2007-12-02T02:35:31.680Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"po_number\": \"string\",\n      \"amount\": {\n        \"currency_code\": \"string\",\n        \"value\": 7273.426466296303\n      },\n      \"remaining\": {\n        \"currency_code\": \"string\",\n        \"value\": 2195.7967497886098\n      },\n      \"status\": \"PARTIAL\",\n      \"created_at\": \"2003-11-08T21:07:41.193Z\",\n      \"due_at\": \"1996-04-05T12:30:41.961Z\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "320f0c5c-1155-4828-b319-0b665e8fc614",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "invoices"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "10"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "50240a8c-91dc-4b4f-946f-73111878ee01",
-          "name": "Get Invoice",
-          "request": {
-            "name": "Get Invoice",
-            "description": {
-              "content": "Retrieve details of a specific invoice.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "invoices",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Invoice ID"
-                }
               ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Returns a list of invoices for the organization."
           },
           "response": [
             {
-              "id": "ae4ab5c7-02bb-467c-b47f-56cbe678d526",
-              "name": "Invoice details",
+              "id": "2d08af2b-a57e-4105-91a5-47e0c47598a2",
+              "name": "List of invoices",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "invoices",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Invoice ID"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?offset=0&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"invoice\": {\n    \"id\": \"string\",\n    \"po_number\": \"string\",\n    \"amount\": {\n      \"currency_code\": \"string\",\n      \"value\": 9409.78376356051\n    },\n    \"remaining\": {\n      \"currency_code\": \"string\",\n      \"value\": 5067.658123478859\n    },\n    \"status\": \"OVERDUE\",\n    \"created_at\": \"1963-01-08T23:06:30.434Z\",\n    \"due_at\": \"1983-06-26T08:10:23.343Z\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"invoices\": [\n    {\n      \"id\": \"<string>\",\n      \"po_number\": \"<string>\",\n      \"amount\": {\n        \"currency_code\": \"<string>\",\n        \"value\": \"<number>\"\n      },\n      \"remaining\": {\n        \"currency_code\": \"<string>\",\n        \"value\": \"<number>\"\n      },\n      \"status\": \"OVERDUE\",\n      \"created_at\": \"<dateTime>\",\n      \"due_at\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"po_number\": \"<string>\",\n      \"amount\": {\n        \"currency_code\": \"<string>\",\n        \"value\": \"<number>\"\n      },\n      \"remaining\": {\n        \"currency_code\": \"<string>\",\n        \"value\": \"<number>\"\n      },\n      \"status\": \"CANCELED\",\n      \"created_at\": \"<dateTime>\",\n      \"due_at\": \"<dateTime>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-2d08af2b-a57e-4105-91a5-47e0c47598a2"
             },
             {
-              "id": "0c36a88b-6ebe-4939-a4b9-c76452456eb9",
+              "id": "a3235df1-5177-4b92-97b0-ec7b01fd1d0f",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "invoices",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Invoice ID"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/invoices?offset=0&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "invoices"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0ab56751-4851-448a-8235-ff987a04e123",
-              "name": "Invoice not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "invoices",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Invoice ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:18.000Z",
+              "updatedAt": "2026-10-21T20:05:18.000Z",
+              "uid": "35240-a3235df1-5177-4b92-97b0-ec7b01fd1d0f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:05:18.000Z",
+          "updatedAt": "2026-10-21T20:05:18.000Z",
+          "uid": "35240-97962a78-23d1-4441-be72-f51d697a384c"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://testflight.tremendous.com/api/v2",
-      "key": "baseUrl"
+      "id": "dc342af7-ef87-4e1f-9ff8-d83bcc3dd477",
+      "createdAt": "2026-10-21T20:05:18.000Z",
+      "updatedAt": "2026-10-21T20:05:18.000Z",
+      "uid": "35240-dc342af7-ef87-4e1f-9ff8-d83bcc3dd477"
     }
   ],
   "auth": {
@@ -363,17 +336,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "073e2b69-baa6-4f80-a5e4-9eb5795cfe58",
-    "name": "Tremendous Campaigns Invoices API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://testflight.tremendous.com/api/v2"
     }
-  }
+  ]
 }

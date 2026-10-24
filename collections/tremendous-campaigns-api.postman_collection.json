@@ -1,332 +1,304 @@
 {
+  "info": {
+    "_postman_id": "62980b41-87b8-4b6b-af1c-c228a5134ed9",
+    "name": "Tremendous Campaigns API",
+    "description": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:05.000Z",
+    "updatedAt": "2026-10-21T20:05:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-62980b41-87b8-4b6b-af1c-c228a5134ed9"
+  },
   "item": [
     {
-      "id": "66bfe16b-fb63-4c66-ab1e-885f849b1ddf",
-      "name": "Campaigns",
-      "description": {
-        "content": "Manage reward presentation and product catalogs",
-        "type": "text/plain"
-      },
+      "name": "campaigns",
       "item": [
         {
-          "id": "d8fb210e-08ad-4a40-b799-d2da4eae1b40",
-          "name": "List Campaigns",
-          "request": {
-            "name": "List Campaigns",
-            "description": {
-              "content": "Returns a list of all campaigns in the organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{id}",
+          "item": [
             {
-              "id": "177ef91b-e5b2-48ee-ac8b-a6198bd74a32",
-              "name": "List of campaigns",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get Campaign",
+              "id": "83348a8c-c264-429e-90d3-15e3481bd069",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"campaigns\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"email_style\": {\n        \"logo\": \"http://UZUdE.akmdZPDcjVB58rB1y8xB88jOMhCkK6uJxsgQwsK5MhSBZf3xd1AqeA\",\n        \"subject\": \"string\",\n        \"body\": \"string\"\n      },\n      \"products\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"email_style\": {\n        \"logo\": \"http://YbXnxQLadMmisRLASzKDD.sigcFktJEMyys8iZNIp,s73b2gMSlBdNNjCUyJV1rvFYxkuxZcwe\",\n        \"subject\": \"string\",\n        \"body\": \"string\"\n      },\n      \"products\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7c702b66-6f3b-4457-aedc-0fee5d9c0707",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "campaigns"
-                  ],
+                  "raw": "{{baseUrl}}/campaigns/:id",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "cff81d9b-d13f-4056-8ecc-663610b3b3fa",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Campaign ID"
+                    }
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve details of a specific campaign by its ID."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "6d68f30f-24ac-4694-99f2-d679d95325c5",
+                  "name": "Campaign details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"campaign\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"email_style\": {\n      \"logo\": \"<uri>\",\n      \"subject\": \"<string>\",\n      \"body\": \"<string>\"\n    },\n    \"products\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-10-21T20:05:06.000Z",
+                  "updatedAt": "2026-10-21T20:05:06.000Z",
+                  "uid": "35240-6d68f30f-24ac-4694-99f2-d679d95325c5"
+                },
+                {
+                  "id": "1010521a-b560-4c29-8716-3618f00aadf8",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:06.000Z",
+                  "updatedAt": "2026-10-21T20:05:06.000Z",
+                  "uid": "35240-1010521a-b560-4c29-8716-3618f00aadf8"
+                },
+                {
+                  "id": "c1e3a524-ce20-4e73-b568-ed49ef443441",
+                  "name": "Campaign not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/campaigns/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "campaigns",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:06.000Z",
+                  "updatedAt": "2026-10-21T20:05:06.000Z",
+                  "uid": "35240-c1e3a524-ce20-4e73-b568-ed49ef443441"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:05:06.000Z",
+              "updatedAt": "2026-10-21T20:05:06.000Z",
+              "uid": "35240-83348a8c-c264-429e-90d3-15e3481bd069"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "55150b7b-f9a8-4f0f-814d-fa5b03bc608f",
+          "createdAt": "2026-10-21T20:05:06.000Z",
+          "updatedAt": "2026-10-21T20:05:06.000Z",
+          "uid": "35240-55150b7b-f9a8-4f0f-814d-fa5b03bc608f"
         },
         {
-          "id": "bfe5339f-c51c-42b4-9c0f-9a8da0c14b25",
-          "name": "Get Campaign",
+          "name": "List Campaigns",
+          "id": "70e5d4da-fb6a-45f5-9b99-c09c47f9ed7b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Get Campaign",
-            "description": {
-              "content": "Retrieve details of a specific campaign by its ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "campaigns",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Campaign ID"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/campaigns",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "campaigns"
+              ]
+            },
+            "description": "Returns a list of all campaigns in the organization."
           },
           "response": [
             {
-              "id": "cdbd7b52-8774-4f66-b572-3126ae8a1b1c",
-              "name": "Campaign details",
+              "id": "80b91119-aacc-460e-a168-e9aba0e0e97b",
+              "name": "List of campaigns",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Campaign ID"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/campaigns",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "campaigns"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"campaign\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"email_style\": {\n      \"logo\": \"https://mbFb.vpeabPI.QzdQ2LRehuGGZd\",\n      \"subject\": \"string\",\n      \"body\": \"string\"\n    },\n    \"products\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"campaigns\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"email_style\": {\n        \"logo\": \"<uri>\",\n        \"subject\": \"<string>\",\n        \"body\": \"<string>\"\n      },\n      \"products\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"email_style\": {\n        \"logo\": \"<uri>\",\n        \"subject\": \"<string>\",\n        \"body\": \"<string>\"\n      },\n      \"products\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:06.000Z",
+              "updatedAt": "2026-10-21T20:05:06.000Z",
+              "uid": "35240-80b91119-aacc-460e-a168-e9aba0e0e97b"
             },
             {
-              "id": "8d5f4ab4-fe82-4db2-b221-979ac73d4ea5",
+              "id": "ace1675e-b156-4a67-af3f-e0bfdfb9a549",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Campaign ID"
-                    }
-                  ]
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/campaigns",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "campaigns"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b298102b-bc12-44d5-9842-3f71e465f0c9",
-              "name": "Campaign not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "campaigns",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Campaign ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:06.000Z",
+              "updatedAt": "2026-10-21T20:05:06.000Z",
+              "uid": "35240-ace1675e-b156-4a67-af3f-e0bfdfb9a549"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:05:06.000Z",
+          "updatedAt": "2026-10-21T20:05:06.000Z",
+          "uid": "35240-70e5d4da-fb6a-45f5-9b99-c09c47f9ed7b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://testflight.tremendous.com/api/v2",
-      "key": "baseUrl"
+      "id": "123e7e1f-2d33-4ae1-84c7-c5815a666146",
+      "createdAt": "2026-10-21T20:05:06.000Z",
+      "updatedAt": "2026-10-21T20:05:06.000Z",
+      "uid": "35240-123e7e1f-2d33-4ae1-84c7-c5815a666146"
     }
   ],
   "auth": {
@@ -334,17 +306,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "4b9fde65-1474-48af-8460-1825f93e07b6",
-    "name": "Tremendous Campaigns API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://testflight.tremendous.com/api/v2"
     }
-  }
+  ]
 }

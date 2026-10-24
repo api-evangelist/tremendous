@@ -1,278 +1,264 @@
 {
+  "info": {
+    "_postman_id": "a1343668-06c3-4bcd-860a-c0101d4aff1c",
+    "name": "Tremendous Members API",
+    "description": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:24.000Z",
+    "updatedAt": "2026-10-21T20:05:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a1343668-06c3-4bcd-860a-c0101d4aff1c"
+  },
   "item": [
     {
-      "id": "7b46e029-ee83-4353-9bed-e11e1808946c",
-      "name": "Members",
-      "description": {
-        "content": "Manage organization members",
-        "type": "text/plain"
-      },
+      "name": "members",
       "item": [
         {
-          "id": "f2ee6974-d8ff-4f7f-b3fb-7b58c13f6e52",
           "name": "List Members",
+          "id": "bb87dfa8-f4a1-473d-9099-0ace60b86c49",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List Members",
-            "description": {
-              "content": "Returns a list of members in the organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "members"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/members",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "members"
+              ]
+            },
+            "description": "Returns a list of members in the organization."
           },
           "response": [
             {
-              "id": "e366090a-755b-47cc-b713-46dc8404dc17",
+              "id": "0642c4d6-bbe9-416b-8fee-23139cdd0673",
               "name": "List of members",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/members",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "members"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"members\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"BxaNEQ@FnzxVAuzOcRDUoEbamDS.ptr\",\n      \"role\": \"MEMBER\",\n      \"status\": \"PENDING\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"email\": \"1cE48EvWPYpe@GE.if\",\n      \"role\": \"MEMBER\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"members\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"ADMIN\",\n      \"status\": \"ACTIVE\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"role\": \"ADMIN\",\n      \"status\": \"ACTIVE\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:05:25.000Z",
+              "updatedAt": "2026-10-21T20:05:25.000Z",
+              "uid": "35240-0642c4d6-bbe9-416b-8fee-23139cdd0673"
             },
             {
-              "id": "162ada7b-e98a-4f15-9782-d3274cce8171",
+              "id": "86520a27-c1ee-42ec-b3e2-c4b51873975c",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/members",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "members"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:25.000Z",
+              "updatedAt": "2026-10-21T20:05:25.000Z",
+              "uid": "35240-86520a27-c1ee-42ec-b3e2-c4b51873975c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:05:25.000Z",
+          "updatedAt": "2026-10-21T20:05:25.000Z",
+          "uid": "35240-bb87dfa8-f4a1-473d-9099-0ace60b86c49"
         },
         {
-          "id": "ae77395a-1a1f-4e2b-b8cb-ae33817f0812",
           "name": "Create Member",
+          "id": "59f23b6e-d83d-41cc-9d0e-b9a7f6607829",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create Member",
-            "description": {
-              "content": "Invite a new member to the organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "members"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"MEMBER\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/members",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "members"
+              ]
+            },
+            "description": "Invite a new member to the organization."
           },
           "response": [
             {
-              "id": "4f2d7a80-4f54-4af6-b5d0-064c760832e9",
+              "id": "cb221edd-b3ce-4808-a48e-b752dace5791",
               "name": "Member created",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"MEMBER\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/members",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "members"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:25.000Z",
+              "updatedAt": "2026-10-21T20:05:25.000Z",
+              "uid": "35240-cb221edd-b3ce-4808-a48e-b752dace5791"
             },
             {
-              "id": "8e653c02-af0f-4cd9-8899-19d7ae56b9e3",
+              "id": "d38c3033-325b-4f32-8c89-fb86a7598faf",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "members"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"<string>\"\n}",
+                  "raw": "{\n  \"email\": \"<email>\",\n  \"name\": \"<string>\",\n  \"role\": \"MEMBER\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/members",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "members"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T20:05:25.000Z",
+              "updatedAt": "2026-10-21T20:05:25.000Z",
+              "uid": "35240-d38c3033-325b-4f32-8c89-fb86a7598faf"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:05:25.000Z",
+          "updatedAt": "2026-10-21T20:05:25.000Z",
+          "uid": "35240-59f23b6e-d83d-41cc-9d0e-b9a7f6607829"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://testflight.tremendous.com/api/v2",
-      "key": "baseUrl"
+      "id": "0fb3d725-4d6f-4daa-af39-00bee2fcca70",
+      "createdAt": "2026-10-21T20:05:25.000Z",
+      "updatedAt": "2026-10-21T20:05:25.000Z",
+      "uid": "35240-0fb3d725-4d6f-4daa-af39-00bee2fcca70"
     }
   ],
   "auth": {
@@ -280,17 +266,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "da62107a-b83f-45ec-b59c-f6f639cc6771",
-    "name": "Tremendous Campaigns Members API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://testflight.tremendous.com/api/v2"
     }
-  }
+  ]
 }

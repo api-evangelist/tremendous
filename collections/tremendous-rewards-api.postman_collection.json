@@ -1,401 +1,363 @@
 {
+  "info": {
+    "_postman_id": "f8c43397-0c1d-4585-bd29-1587ef1b1c92",
+    "name": "Tremendous Rewards API",
+    "description": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:05:47.000Z",
+    "updatedAt": "2026-10-21T20:05:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f8c43397-0c1d-4585-bd29-1587ef1b1c92"
+  },
   "item": [
     {
-      "id": "d4ac728b-918f-4871-9c59-98970c03777a",
-      "name": "Rewards",
-      "description": {
-        "content": "Manage individual rewards within orders",
-        "type": "text/plain"
-      },
+      "name": "rewards",
       "item": [
         {
-          "id": "bf5db4e8-0efb-4fdc-adb2-112d0c52b1a4",
-          "name": "Get Reward",
-          "request": {
-            "name": "Get Reward",
-            "description": {
-              "content": "Retrieve details of a specific reward by its ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rewards",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Reward ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{id}",
+          "item": [
             {
-              "id": "f8f245c7-0ce1-4d4f-97a3-1e359ee10409",
-              "name": "Reward details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rewards",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Reward ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+              "name": "resend",
+              "item": [
+                {
+                  "name": "Resend Reward",
+                  "id": "c8eba8c0-678f-4c22-aa37-0e814d342b79",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/rewards/:id/resend",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rewards",
+                        ":id",
+                        "resend"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b0efa814-3695-4ba0-9fe6-f7a18474fd4a",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Reward ID"
+                        }
+                      ]
+                    },
+                    "description": "Resend the delivery for a reward (e.g., resend the email)."
+                  },
+                  "response": [
+                    {
+                      "id": "db45f210-d600-47bf-9834-a8f2052d688d",
+                      "name": "Reward resent",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rewards/:id/resend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rewards",
+                            ":id",
+                            "resend"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:05:48.000Z",
+                      "updatedAt": "2026-10-21T20:05:48.000Z",
+                      "uid": "35240-db45f210-d600-47bf-9834-a8f2052d688d"
+                    },
+                    {
+                      "id": "784e0b4f-1624-4c0b-84f7-c697aece3a52",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rewards/:id/resend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rewards",
+                            ":id",
+                            "resend"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:05:48.000Z",
+                      "updatedAt": "2026-10-21T20:05:48.000Z",
+                      "uid": "35240-784e0b4f-1624-4c0b-84f7-c697aece3a52"
+                    },
+                    {
+                      "id": "feb6bbb4-e8a8-451f-a29a-6ab933eb10e9",
+                      "name": "Reward not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rewards/:id/resend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rewards",
+                            ":id",
+                            "resend"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T20:05:48.000Z",
+                      "updatedAt": "2026-10-21T20:05:48.000Z",
+                      "uid": "35240-feb6bbb4-e8a8-451f-a29a-6ab933eb10e9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:05:48.000Z",
+                  "updatedAt": "2026-10-21T20:05:48.000Z",
+                  "uid": "35240-c8eba8c0-678f-4c22-aa37-0e814d342b79"
+                }
+              ],
+              "id": "11eac881-d94d-48a6-b3b3-beb18620d7b7",
+              "createdAt": "2026-10-21T20:05:48.000Z",
+              "updatedAt": "2026-10-21T20:05:48.000Z",
+              "uid": "35240-11eac881-d94d-48a6-b3b3-beb18620d7b7"
+            },
+            {
+              "name": "Get Reward",
+              "id": "c41506f4-1784-4271-a604-3969384f387d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"reward\": {\n    \"id\": \"string\",\n    \"order_id\": \"string\",\n    \"status\": \"PROCESSING\",\n    \"value\": {\n      \"denomination\": 2354.8072204950445,\n      \"currency_code\": \"string\"\n    },\n    \"recipient\": {\n      \"name\": \"string\",\n      \"email\": \"opc1rNnpp@iMOHdeVqXRneUcLdlJmhT.ayf\",\n      \"phone\": \"string\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\",\n      \"status\": \"string\",\n      \"delivered_at\": \"2024-11-09T05:44:58.091Z\"\n    },\n    \"campaign_id\": \"string\",\n    \"created_at\": \"2010-07-08T03:25:07.947Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c71aac39-ee1d-4b28-8cd6-c43a6c96c2b0",
-              "name": "Unauthorized",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/rewards/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "rewards",
                     ":id"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
                   "variable": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
+                      "id": "2ba0ab2a-bcde-46a2-b34d-0901aa44aeaa",
                       "key": "id",
+                      "value": "<string>",
                       "description": "(Required) Reward ID"
                     }
                   ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve details of a specific reward by its ID."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "576c2a93-32ac-4166-8645-df2d52f10248",
-              "name": "Reward not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rewards",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Reward ID"
+                  "id": "47450c90-b5f4-4727-8d25-45d79976c6e2",
+                  "name": "Reward details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rewards/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rewards",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
                     }
-                  ]
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"reward\": {\n    \"id\": \"<string>\",\n    \"order_id\": \"<string>\",\n    \"status\": \"PENDING\",\n    \"value\": {\n      \"denomination\": \"<number>\",\n      \"currency_code\": \"<string>\"\n    },\n    \"recipient\": {\n      \"name\": \"<string>\",\n      \"email\": \"<email>\",\n      \"phone\": \"<string>\"\n    },\n    \"delivery\": {\n      \"method\": \"EMAIL\",\n      \"status\": \"<string>\",\n      \"delivered_at\": \"<dateTime>\"\n    },\n    \"campaign_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:05:48.000Z",
+                  "updatedAt": "2026-10-21T20:05:48.000Z",
+                  "uid": "35240-47450c90-b5f4-4727-8d25-45d79976c6e2"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "8bf23131-a8b3-42a4-9874-0fb352257a46",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rewards/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rewards",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:48.000Z",
+                  "updatedAt": "2026-10-21T20:05:48.000Z",
+                  "uid": "35240-8bf23131-a8b3-42a4-9874-0fb352257a46"
+                },
+                {
+                  "id": "43d32b67-c969-439d-a966-5e4f6c8f8804",
+                  "name": "Reward not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rewards/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rewards",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:05:48.000Z",
+                  "updatedAt": "2026-10-21T20:05:48.000Z",
+                  "uid": "35240-43d32b67-c969-439d-a966-5e4f6c8f8804"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T20:05:48.000Z",
+              "updatedAt": "2026-10-21T20:05:48.000Z",
+              "uid": "35240-c41506f4-1784-4271-a604-3969384f387d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4f095dc9-cc83-4e62-8f06-ee7d9d1d75bd",
-          "name": "Resend Reward",
-          "request": {
-            "name": "Resend Reward",
-            "description": {
-              "content": "Resend the delivery for a reward (e.g., resend the email).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "rewards",
-                ":id",
-                "resend"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Reward ID"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "26615d2d-17be-477b-a9a1-c03d6efbf268",
-              "name": "Reward resent",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rewards",
-                    ":id",
-                    "resend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Reward ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3a2b0baa-a744-4cbf-8d17-b9c52f6d1d88",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rewards",
-                    ":id",
-                    "resend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Reward ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0c058ebb-2714-44fd-9d24-472cc0c39a85",
-              "name": "Reward not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "rewards",
-                    ":id",
-                    "resend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Reward ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "64519c24-1c1b-4ce7-828b-3d244632ceb3",
+          "createdAt": "2026-10-21T20:05:48.000Z",
+          "updatedAt": "2026-10-21T20:05:48.000Z",
+          "uid": "35240-64519c24-1c1b-4ce7-828b-3d244632ceb3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://testflight.tremendous.com/api/v2",
-      "key": "baseUrl"
+      "id": "9fc3ee78-6b1d-438e-999c-d4e05b68b33c",
+      "createdAt": "2026-10-21T20:05:48.000Z",
+      "updatedAt": "2026-10-21T20:05:48.000Z",
+      "uid": "35240-9fc3ee78-6b1d-438e-999c-d4e05b68b33c"
     }
   ],
   "auth": {
@@ -403,17 +365,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "855284c5-0546-437c-9442-440173be84b9",
-    "name": "Tremendous Campaigns Rewards API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Tremendous API allows businesses to send rewards, incentives, and payouts worldwide. Access 2000+ payout methods including gift cards, prepaid Visa/Mastercard, PayPal, Venmo, bank transfers, and charity donations. Supports multi-product rewards (recipient chooses from a catalog) and single-product rewards (fixed payout method). Authentication uses Bearer API key or OAuth 2.0.\n\nContact Support:\n Name: Tremendous Support\n Email: api@tremendous.com",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://testflight.tremendous.com/api/v2"
     }
-  }
+  ]
 }
